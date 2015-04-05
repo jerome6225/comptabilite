@@ -1,0 +1,140 @@
+body {
+    margin: 0; /* pour éviter les marges */
+    padding:0;
+    background: url('../img/background.jpg') no-repeat center fixed; 
+    -webkit-background-size: cover; /* pour anciens Chrome et Safari */
+    background-size: cover; /* version standardisée */
+}
+
+#global {
+    background-color: rgba(188, 188, 188, 0.5);
+    border-radius: 10px;
+    margin: 0 auto;
+    min-height: 900px;
+    width: 1096px;
+}
+
+.error_input {
+    border-color: #ff0000 !important;
+}
+/************************************************/
+/******************** MENU **********************/
+/************************************************/
+
+.compta_contener {
+    clear:both;
+    margin:0 0 0 0;
+    height:53px; 
+    display:block;
+    background-color: rgba(140, 140, 140, 1);
+}
+
+.compta_menu, .compta_menu * {
+    margin:0;
+    padding:0;
+    list-style:none;
+}
+
+.compta_menu {
+    float: left;
+    width:100%;
+    line-height:1.15;
+}
+
+.compta_menu .open-mobile-2{ 
+    display:none;
+}
+
+.compta_menu > ul {
+    position:absolute;
+    top:-999em;
+}
+
+.compta_menu li {
+    float:left;
+    position:relative;
+    background-color: rgba(140, 140, 140, 1);
+    border-right: 1px solid rgba(110, 110, 110, 1);
+    padding: 15px 0;
+}
+
+.compta_menu li:hover .compta_div{
+    display: block;
+}
+
+
+
+.compta_menu > li > div {
+    position: absolute; 
+    background-color: #ffffff;
+    z-index: 999;
+    border: 1px solid #1ca3fe;  
+    display: none;
+    top: 53px;
+    left: 0;
+}
+
+.compta_menu > li > div > div {
+    display: inline-block;
+    padding: 0;
+    width: 192px;
+}
+
+.compta_menu > li > div > div > div {
+    display: table-cell;
+    width: 192px;
+}
+
+.compta_menu > li > a:hover {
+    text-decoration: none; 
+    color: #ffa200;
+}
+
+.compta_menu > li > a {
+    padding: 10px; 
+    font-size: 20px; 
+    font-weight: bold;
+    color: #000000;
+    text-decoration: none;
+    /*text-transform: uppercase;*/
+}
+
+.compta_category_select {
+    color: #ffa200 !important;
+}
+
+.compta_menu h3 a {
+    display:block;
+    position:relative; 
+    font-size: 18px;
+}
+
+.compta_menu h3 a:hover {
+    text-decoration: none; 
+    color: #ffa200;
+}
+
+.compta_menu div ul li {
+    border-bottom: 1px solid #1ca3fe;
+    padding: 14px 3px 14px 2px;
+    width: 188px;
+    text-align: center;
+}
+
+.compta_menu div ul li.second_li {
+    width: 182px;
+}
+
+.compta_menu div ul li a {
+    text-decoration: none;
+    color: #000000;
+}
+.compta_menu div ul li a:hover {
+    text-decoration: none; 
+    font-weight: bold;
+}
+
+.compta_menu div ul li a:hover .compta_span_select {
+    color: #ffa200;
+}
+

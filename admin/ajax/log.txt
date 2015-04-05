@@ -1,0 +1,10 @@
+object(stdClass)#3 (4) {
+  ["id_admin"]=>
+  string(1) "1"
+  ["mail"]=>
+  string(25) "jerome.ratel123@gmail.com"
+  ["password"]=>
+  string(32) "6e503367d84a4fb6fd65944adf032211"
+  ["type_admin"]=>
+  string(1) "1"
+}

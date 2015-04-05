@@ -1,0 +1,11 @@
+body {
+	margin: 0 auto;
+	background-color: #cccccc;
+}
+
+@media (min-width:992px) {
+
+    body {padding-top:HEIGHTOFNAVBAR}
+    .navbar-static-top {position:fixed;top:0;right:0;left:0;}
+
+}
