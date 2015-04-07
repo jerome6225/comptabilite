@@ -109,12 +109,13 @@
 			return Db::delete('movement', $where);
 		}
 
-		public static function updateMovement($idMovement, $amount, $dateMovement, $name, $category, $dateEnd)
+		public static function updateMovement($idMovement, $idUser, $amount, $dateMovement, $name, $category, $dateEnd)
 		{
 			$fields = array(
 				'amount'            => array(PDO::PARAM_STR => $amount),
 				'date_movement'     => array(PDO::PARAM_STR => $dateMovement),
 				'name_movement'     => array(PDO::PARAM_STR => $name),
+				'id_user_account'   => array(PDO::PARAM_INT => $idUser),
 				'movement_category' => array(PDO::PARAM_INT => $category),
 				'date_end'          => array(PDO::PARAM_STR => $dateEnd),
 			);
