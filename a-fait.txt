@@ -1,28 +1,3 @@
-ajax/changeAccount.php
-ajax/changePassword.php
-ajax/changeUserAccount.php
-ajax/changeUserAccountValid.php
-ajax/deleteMovement.php
-ajax/login.php
-ajax/modifIdUserAccountIdAccount.php
-ajax/modifUserAccount.php
-ajax/modifyMovement.php
-ajax/newAccount.php
-ajax/newIdUserAccountIdAccount.php
-ajax/newLogin.php
-ajax/newMovement.php
-ajax/newUser.php
-ajax/newUserAccount.php
 
-
-controllers/accountController.php
-controllers/accountStatementController.php
-controllers/changeAccountController.php
-controllers/changeUserAccount.php
-controllers/choiceAccountController.php
-controllers/movementController.php
-controllers/newAccountController.php
-controllers/prelevementMensuelController.php
-controllers/synthesisController.php
 
 

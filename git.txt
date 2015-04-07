@@ -1,0 +1,8 @@
+creer une branche:
+  git checkout -b nom_de_la_branche
+
+creer une branche sur github:
+  git push -u origin dev
+
+pousser sur le branche github:
+  git push 
