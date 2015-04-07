@@ -1,11 +1,46 @@
 body {
-	margin: 0 auto;
-	background-color: #cccccc;
+  background-color: #cccccc;
 }
 
-@media (min-width:992px) {
+.container {
+	background-color:#ffffff;
+}
 
-    body {padding-top:HEIGHTOFNAVBAR}
-    .navbar-static-top {position:fixed;top:0;right:0;left:0;}
+@media (min-width: 768px) {
+	.dropdown:hover .dropdown-menu {
+		display: block;
+	}
 
+	.navbar-fixed-top {
+        position: relative;
+        top: auto;
+    }
+    .navbar-collapse {
+        max-height: none;
+    }
+    body {
+        margin: 0;
+    }
+}
+
+@media (max-width: 768px) {
+  .banniere_size {
+		display: none;
+	}
+}
+
+@media (max-width: 991px) {
+  .banniere_size {
+		width: 746px;
+	}
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+  .banniere_size {
+		width: 966px;
+	}
+}
+@media (min-width: 1200px) {
+  .banniere_size {
+		width: 1166px;
+	}
 }
