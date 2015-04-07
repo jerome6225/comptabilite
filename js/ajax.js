@@ -270,6 +270,9 @@ function deleteMovement(id_movement){
 		url: "ajax/deleteMovement.php",
 		data: {
 			id_movement: id_movement,
+			idAccount: $("#id_account_" + id_movement).val(),
+			amount: $("#amount_" + id_movement).html(),
+			debit: $("#debit_" + id_movement).val(),
 		},
 		success: function(msg){
 			if (msg == "error")
@@ -278,7 +281,7 @@ function deleteMovement(id_movement){
 			}
 			else
 			{
-				$("#tr_" + id_movement).hide();
+				$("#tr_" + id_movement).addClass('sr-only');
 				return false;
 			}
 		}
@@ -303,9 +306,13 @@ function validModify(id_movement, monthly){
 			id_movement: id_movement,
 			date_begin: date_begin,
 			date_end: date_end,
+			user: $("#modify_user_" + id_movement).val(),
 			name: $("#modify_name_" + id_movement).val(),
 			category: $("#modify_category_" + id_movement).val(),
 			amount: $("#modify_amount_" + id_movement).val(),
+			oldAmount: $("#amount_" + id_movement).html(),
+			idAccount: $("#id_account_" + id_movement).val(),
+			debit: $("#debit_" + id_movement).val(),
 		},
 		success: function(msg){
 			if (msg == "error")
@@ -318,8 +325,8 @@ function validModify(id_movement, monthly){
 				$("#name_" + id_movement).html($("#modify_name_" + id_movement).val());
 				$("#category_" + id_movement).html(msg);
 				$("#amount_" + id_movement).html($("#modify_amount_" + id_movement).val());
-				$(".span_modify_movement_" + id_movement).show();
-				$(".input_hidden_" + id_movement).addClass("input_hidden");
+				$(".span_modify_movement_" + id_movement).removeClass('sr-only');
+				$(".input_hidden_" + id_movement).addClass("sr-only");
 				return false;
 			}
 		}

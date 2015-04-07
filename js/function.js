@@ -18,15 +18,15 @@ function clear_form_elements(ele)
 
 function showModifyMovement(id_movement)
 {
-	$(".span_modify_movement_" + id_movement).hide();
-	$(".input_hidden_" + id_movement).removeClass("input_hidden");
+	$(".span_modify_movement_" + id_movement).addClass('sr-only');
+	$(".input_hidden_" + id_movement).removeClass("sr-only");
 	return false;
 }
 
-function cancelModify (id_movement)
+function cancelModify(id_movement)
 {
-	$(".span_modify_movement_" + id_movement).show();
-	$(".input_hidden_" + id_movement).addClass("input_hidden");
+	$(".span_modify_movement_" + id_movement).removeClass("sr-only");
+	$(".input_hidden_" + id_movement).addClass("sr-only");
 	return false;
 }
 

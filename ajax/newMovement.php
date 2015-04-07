@@ -18,7 +18,7 @@
 		
 		$newTotalBalance   = ($_POST['debit'] == "1") ? (float)$accountBalance->balance_total - (float)$_POST['amount'] : (float)$accountBalance->balance_total + (float)$_POST['amount'];
 
-		$update = AccountBalance::addNewAccountBalance($_SESSION['id_account'], $newCurrentBalance, $newTotalBalance);
+		$update = AccountBalance::updateAccountBalance($_SESSION['id_account'], $newCurrentBalance, $newTotalBalance);
 		
 		if (!isset($_SESSION['nb_movement']))
 		{

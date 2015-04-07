@@ -23,4 +23,6 @@
 		$movements  = $getMovements['movements'];
 
 		$categoryMovement = CategoryMovement::getCategoriesMovement();
+
+		$users = UserAccount::getUsersAccount($_SESSION['id_user']);
 	}

@@ -37,4 +37,18 @@
 
 			return false;
 		}
+
+		public static function updateAccountBalance($idAccount, $currentBalance, $balanceTotal)
+		{
+			$fields = array(
+				'current_balance'  => array(PDO::PARAM_STR => $currentBalance),
+				'balance_total'  => array(PDO::PARAM_STR => $balanceTotal),
+			);
+
+			$where = array(
+				'id_account' => array(PDO::PARAM_INT => $idAccount),
+			);
+
+			$accountBalance = Db::update('account_balance', $fields, $where);
+		}
 	}

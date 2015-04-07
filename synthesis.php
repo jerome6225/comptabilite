@@ -47,44 +47,46 @@
 						<th colspan="2">&nbsp;</th>
 					</tr>
 					<?php $total = 0 ?>
-					<?php foreach ($movement as $m) { ?>
+					<?php foreach ($movement as $m) { var_dump($m); ?>
 						<tr class="text-left" id="tr_<?php echo $m['id_movement'] ?>">
 							<td>
 								<span class="span_modify_movement_<?php echo $m['id_movement'] ?>" id="date_<?php echo $m['id_movement'] ?>"><?php echo $m['date_movement'] ?></span>
 								<?php if($m['monthly']){ ?>
-									<input type="text" class="input_hidden input_hidden_<?php echo $m['id_movement'] ?> input_monthly" id="modify_date_begin_<?php echo $m['id_movement'] ?>" value="<?php echo $m['date_begin'] ?>" />
-									<input type="text" class="input_hidden input_hidden_<?php echo $m['id_movement'] ?> input_monthly" id="modify_date_end_<?php echo $m['id_movement'] ?>" value="<?php echo $m['date_end'] ?>" />
+									<input type="text" class="sr-only input_hidden_<?php echo $m['id_movement'] ?> input_monthly" id="modify_date_begin_<?php echo $m['id_movement'] ?>" value="<?php echo $m['date_begin'] ?>" />
+									<input type="text" class="sr-only input_hidden_<?php echo $m['id_movement'] ?> input_monthly" id="modify_date_end_<?php echo $m['id_movement'] ?>" value="<?php echo $m['date_end'] ?>" />
 								<?php }else { ?>
-									<input type="text" class="input_hidden input_hidden_<?php echo $m['id_movement'] ?>" id="modify_date_<?php echo $m['id_movement'] ?>" value="<?php echo $m['date_movement'] ?>" />
+									<input type="text" class="sr-only input_hidden_<?php echo $m['id_movement'] ?>" id="modify_date_<?php echo $m['id_movement'] ?>" value="<?php echo $m['date_movement'] ?>" />
 								<?php } ?>
 							</td>
 							<td class="text-left" <?php if (isset($m['color'])){ ?>style="background-color: <?php echo $m['color'] ?>"<?php } ?>>
-								<span class="span_modify_user_<?php echo $m['id_movement'] ?>" id="user_<?php echo $m['id_movement'] ?>"><?php echo $m['name_user_account'] ?></span>
-								<input type="text" class="input_hidden input_hidden_<?php echo $m['id_movement'] ?>" id="modify_user_<?php echo $m['id_movement'] ?>" value="<?php echo $m['name_user_account'] ?>" />
+								<span class="span_modify_movement_<?php echo $m['id_movement'] ?>" id="user_<?php echo $m['id_movement'] ?>"><?php echo (isset($m['name_user_account'])) ? $m['name_user_account'] : 'Tout le monde'; ?></span>
+								<select class="sr-only input_hidden_<?php echo $m['id_movement'] ?>"><option value="0">Tout le monde</option><?php foreach ($users as $user){ ?><option value="<?php echo $user['id_user_account']?>"><?php echo $user['name_user_account']?></option><?php } ?></select>
 							</td>
 							<td class="text-left">
 								<span class="span_modify_movement_<?php echo $m['id_movement'] ?>" id="name_<?php echo $m['id_movement'] ?>"><?php echo $m['name_movement'] ?></span>
-								<input type="text" class="input_hidden input_hidden_<?php echo $m['id_movement'] ?>" id="modify_name_<?php echo $m['id_movement'] ?>" value="<?php echo $m['name_movement'] ?>" />
+								<input type="text" class="sr-only input_hidden_<?php echo $m['id_movement'] ?>" id="modify_name_<?php echo $m['id_movement'] ?>" value="<?php echo $m['name_movement'] ?>" />
 							</td>
 							<td class="text-right">
 								<span class="span_modify_movement_<?php echo $m['id_movement'] ?>" id="category_<?php echo $m['id_movement'] ?>"><?php echo $m['movement_category'] ?></span>
-								<select class="input_hidden input_hidden_<?php echo $m['id_movement'] ?>" id="modify_category_<?php echo $m['id_movement'] ?>">
+								<select class="sr-only input_hidden_<?php echo $m['id_movement'] ?>" id="modify_category_<?php echo $m['id_movement'] ?>">
 									<?php foreach ($categoryMovement as $c) echo '<option value="'.$c['id_category_movement'].'">'.$c['name_category_movement'].'</option>' ?>
 								</select>
 							</td>
 							<td class="text-right <?php echo $m['color_debit'] ?>">
 								<span class="span_modify_movement_<?php echo $m['id_movement'] ?>" id="amount_<?php echo $m['id_movement'] ?>"><?php echo $m['amount'] ?></span>
-								<input type="text" class="input_hidden input_hidden_<?php echo $m['id_movement'] ?>" id="modify_amount_<?php echo $m['id_movement'] ?>" value="<?php echo $m['amount'] ?>" />
+								<input type="text" class="sr-only input_hidden_<?php echo $m['id_movement'] ?>" id="modify_amount_<?php echo $m['id_movement'] ?>" value="<?php echo $m['amount'] ?>" />
 							</td>
 							<td class="cursor_pointer" id="modifier_<?php echo $m['id_movement'] ?>">
 								<span class="span_modify_movement_<?php echo $m['id_movement'] ?>" onclick="showModifyMovement('<?php echo $m['id_movement'] ?>');"><img src="img/modifier.png" width="16"/></span>
-								<input type="button" class="input_hidden input_hidden_<?php echo $m['id_movement'] ?>" id="modify_valid_<?php echo $m['id_movement'] ?>" value="Valider" onclick="validModify('<?php echo $m['id_movement'] ?>', '<?php echo $m['monthly'] ?>');" />
+								<button type="button" class="btn btn-primary btn-sm sr-only input_hidden_<?php echo $m['id_movement'] ?>" onclick="validModify('<?php echo $m['id_movement'] ?>', '<?php echo $m['monthly'] ?>');" id="modify_valid_<?php echo $m['id_movement'] ?>"><span class="glyphicon glyphicon-pencil"></span> Valider</button>
 							</td>
 							<td class="cursor_pointer" id="supprimer_<?php echo $m['id_movement'] ?>">
 								<span class="span_modify_movement_<?php echo $m['id_movement'] ?>" onclick="deleteMovement('<?php echo $m['id_movement'] ?>');"><img src="img/supprimer.png" width="16" /></span>
-								<input type="button" class="input_hidden input_hidden_<?php echo $m['id_movement'] ?>" id="modify_cancel_<?php echo $m['id_movement'] ?>" value="Annuler" onclick="cancelModify('<?php echo $m['id_movement'] ?>');" />
+								<button type="button" class="btn btn-primary btn-sm sr-only input_hidden_<?php echo $m['id_movement'] ?>" onclick="cancelModify('<?php echo $m['id_movement'] ?>');" id="modify_cancel_<?php echo $m['id_movement'] ?>"><span class="glyphicon glyphicon-remove"></span> Annuler</button>
 							</td>
 						</tr>
+						<input type="hidden" id="id_account_<?php echo $m['id_movement'] ?>" value="<?php echo $m['id_account'] ?>" />
+						<input type="hidden" id="debit_<?php echo $m['id_movement'] ?>" value="<?php echo $m['debit'] ?>" />
 						<script type="text/javascript">
 							$(function() {
 								 $(function() {
