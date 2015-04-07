@@ -47,7 +47,7 @@
 						<th colspan="2">&nbsp;</th>
 					</tr>
 					<?php $total = 0 ?>
-					<?php foreach ($movement as $m) { var_dump($m); ?>
+					<?php foreach ($movement as $m) { ?>
 						<tr class="text-left" id="tr_<?php echo $m['id_movement'] ?>">
 							<td>
 								<span class="span_modify_movement_<?php echo $m['id_movement'] ?>" id="date_<?php echo $m['id_movement'] ?>"><?php echo $m['date_movement'] ?></span>
