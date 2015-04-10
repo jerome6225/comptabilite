@@ -17,7 +17,7 @@ ligne de commande:
 	redemarrer le service -> sudo service cron restart
 
 Debug:
-    - Quand on supprime ou modifie un mouvement supprimer ou modifier la somme dans account_balance.
+	- Problème de couleur dans synthese.php
     - Quand on modifie un mouvement vérifié l'enregistrement de la date.
     - dans Bilan:
     	Warning dans

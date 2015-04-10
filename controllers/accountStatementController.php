@@ -95,6 +95,8 @@
 
 				$bil['total_debit']       = $totalDebit;
 				$bil['total_credit']      = $totalCredit;
+				$bil['graph_debit']       = ((float)$totalDebit < 0) ? (float)$totalDebit * -1 : (float)$totalDebit;
+				$bil['graph_credit']      = ((float)$totalCredit < 0) ? (float)$totalCredit * -1 : (float)$totalCredit;
 				$bil['total_amount']      = $totalMonth;
 				$bil['color']             = $u['color'];
 				$bil['name_user_account'] = $u['name_user_account'];
@@ -106,7 +108,7 @@
 		$bilanUsers[$key] = $bilUs;
 	}
 
-	$total = array();
+	/*$total = array();
 
 	foreach ($bilanUsers as $key => $bilanUser)
 	{
@@ -114,7 +116,7 @@
 		$totalCredit = 0;
 		foreach ($bilanUser as $bil)
 		{
-			if (!is_null($bil['name_user_account']))
+			//if (!is_null($bil['name_user_account']))
 				$totalCredit = (float)$totalCredit + (float)$bil['total_credit'];
 
 			$totalDebit = (float)$totalDebit + (float)$bil['total_debit'];
@@ -122,34 +124,27 @@
 
 		$total[$key]['total_debit']  = $totalDebit;
 		$total[$key]['total_credit'] = $totalCredit;
+		$total[$key]['graph_debit']  = ((float)$totalDebit < 0) ? (float)$totalDebit * -1 : (float)$totalDebit;
+		$total[$key]['graph_credit'] = ((float)$totalCredit < 0) ? (float)$totalCredit * -1 : (float)$totalCredit;
 	}
+var_dump($total);
+	$bilanUsersTotal = array();*/
 
-	$bilanUsersTotal = array();
-
-	foreach ($bilanUsers as $key => $bilanUser)
+	/*foreach ($bilanUsers as $key => $bilanUser)
 	{
 		$bilanUserTotal = array();
 		foreach ($bilanUser as $k => $bil)
 		{
 			$bilanUserTotal[$k] = $bil;
 
-			if (!is_null($bil['name_user_account']))
-			{
-				$percentCredit = round((float)$bil['total_credit'] * 100 / (float)$total[$key]['total_credit'], 2);
+			$bilanUserTotal[$k]['percent_credit'] = $bil['total_credit'];
 
-				$bilanUserTotal[$k]['percent_credit'] = $percentCredit;
-			}
-			else
-			{
-				$bilanUserTotal[$k]['color'] = '#000000';
-			}
-			$percentDebit  = round((float)$bil['total_debit'] * 100 / (float)$total[$key]['total_debit'], 2);
 
-			$bilanUserTotal[$k]['percent_debit'] = $percentDebit;
+			$bilanUserTotal[$k]['percent_debit'] = $bil['total_debit'];
 		}
 
 		$bilanUsersTotal[$key] = $bilanUserTotal;
-	}
+	}*/
 
 	foreach ($idsAccount as $id)
 	{
@@ -168,7 +163,8 @@
 			{
 				if ($j != 'total_category_movement')
 				{
-					$categorie[$j]['percent'] = round((float)$cate['amount'] * 100 / $c['total_category_movement']['amount'] , 2);
+					//$categorie[$j]['percent'] = round((float)$cate['amount'] * 100 / $c['total_category_movement']['amount'] , 2);
+					$categorie[$j]['percent'] = $cate['amount'];
 					$categorie[$j]['color']   = $cate['color'];
 				}
 			}
