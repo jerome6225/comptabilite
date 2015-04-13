@@ -17,8 +17,6 @@ ligne de commande:
 	redemarrer le service -> sudo service cron restart
 
 Debug:
-	- Problème de couleur dans synthese.php
-    - Quand on modifie un mouvement vérifié l'enregistrement de la date.
     - dans Bilan:
     	Warning dans
     		"Undefined index: courant*35 in /var/www/comptabiliteClass/accountStatement .php on line 52, referer: http://jerome.ratel.stomp9.fr/comptabiliteClass/synthesis.php" et 
@@ -34,23 +32,43 @@ Reste à faire:
   
 
 boite à idées:
-	faire une page projet pour calculer le montant d'un projet et le temps pour le réaliser:
-		- faire un sous menu en ajax suivant la selection (voir les modules mdweb partie admin):
-			- montant total et date d'echeance donne le montant de chacun par mois
-			- montant total et montant de chacun donne le nombre de mois
-			- montant de chacun et date d'echeance donne le montant total
+	interface utilisateur:
+		modifier relevé de compte pour affichage au mois:
+			- mettre un select pour le mois et un pour l'année
 
-		- ce baser sur le compte selectionné
-		- recuperer les utilisateurs du compte pour les afficher avec des checkbox
-		- calculer la part de chacun en fonction de ses revenus.
+		modifier relevé de comptes pour saisir directement une nouvelle entrée dans cette page:
+			- prévoir une ligne en plus dans le tableau pour insertion en base
 
-	faire une page remboursement si jamais on emprunte de l'argent à quelqu'un avec un suivie des remboursements.
-		- creer une table empreint (id_emprunt, name_emprunt, amount_emprunt, date_emprunt)
-		- creer une table remboursement (id_remboursement, id_emprunt, date_remboursement)
-		- creer une interface par utilisateur avec un systeme d'onglet (voir les modules mdweb partie admin)
-		- montant total à rembourser
-		- liste des remboursements déjà effectués.
+		faire une page projet pour calculer le montant d'un projet et le temps pour le réaliser:
+			- faire un sous menu en ajax suivant la selection (voir les modules mdweb partie admin):
+				- montant total et date d'echeance donne le montant de chacun par mois
+				- montant total et montant de chacun donne le nombre de mois
+				- montant de chacun et date d'echeance donne le montant total
 
-	importer et exporter des csv
-	interface admin
-	voir le js appel ajax sur welcome
+			- ce baser sur le compte selectionné
+			- recuperer les utilisateurs du compte pour les afficher avec des checkbox
+			- calculer la part de chacun en fonction de ses revenus.
+
+		faire une page remboursement si jamais on emprunte de l'argent à quelqu'un avec un suivie des remboursements.
+			- creer une table empreint (id_emprunt, name_emprunt, amount_emprunt, date_emprunt)
+			- creer une table remboursement (id_remboursement, id_emprunt, date_remboursement)
+			- creer une interface par utilisateur avec un systeme d'onglet (voir les modules mdweb partie admin)
+			- montant total à rembourser
+			- liste des remboursements déjà effectués.
+
+		Voir pour faire des virements en interne entre compte.
+
+		importer et exporter des csv
+
+		page suppression de compte
+
+
+
+	interface admin:
+		page gestion des utilisateurs
+
+		page gestion des comptes utilisateurs
+
+		page gestion des types de mouvements
+
+		page gestion des types de comptes

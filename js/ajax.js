@@ -289,22 +289,14 @@ function deleteMovement(id_movement){
 }
 
 function validModify(id_movement, monthly){
-	if (monthly == 1)
-	{
-		var date_begin = $("#modify_date_begin_" + id_movement).val();
-		var date_end   = $("#modify_date_end_" + id_movement).val();
-	}
-	else
-	{
-		var date_begin = $("#modify_date_" + id_movement).val();
-		var date_end   = '0000-00-00';
-	}
+	var date_end = (monthly == 1) ? $("#modify_date_end_" + id_movement).val() : '0000-00-00';
+
 	$.ajax({
 		type: "POST",
 		url: "ajax/modifyMovement.php",
 		data: {
 			id_movement: id_movement,
-			date_begin: date_begin,
+			date_begin: $("#modify_date_begin_" + id_movement).val(),
 			date_end: date_end,
 			user: $("#modify_user_" + id_movement).val(),
 			name: $("#modify_name_" + id_movement).val(),
@@ -321,7 +313,7 @@ function validModify(id_movement, monthly){
 			}
 			else
 			{
-				$("#date_" + id_movement).html(date_begin);
+				$("#date_" + id_movement).html($("#modify_date_begin_" + id_movement).val());
 				$("#name_" + id_movement).html($("#modify_name_" + id_movement).val());
 				$("#category_" + id_movement).html(msg);
 				$("#amount_" + id_movement).html($("#modify_amount_" + id_movement).val());

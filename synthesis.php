@@ -51,11 +51,9 @@
 						<tr class="text-left" id="tr_<?php echo $m['id_movement'] ?>">
 							<td>
 								<span class="span_modify_movement_<?php echo $m['id_movement'] ?>" id="date_<?php echo $m['id_movement'] ?>"><?php echo $m['date_movement'] ?></span>
-								<?php if($m['monthly']){ ?>
 									<input type="text" class="sr-only input_hidden_<?php echo $m['id_movement'] ?> input_monthly" id="modify_date_begin_<?php echo $m['id_movement'] ?>" value="<?php echo $m['date_begin'] ?>" />
+								<?php if($m['monthly']){ ?>
 									<input type="text" class="sr-only input_hidden_<?php echo $m['id_movement'] ?> input_monthly" id="modify_date_end_<?php echo $m['id_movement'] ?>" value="<?php echo $m['date_end'] ?>" />
-								<?php }else { ?>
-									<input type="text" class="sr-only input_hidden_<?php echo $m['id_movement'] ?>" id="modify_date_<?php echo $m['id_movement'] ?>" value="<?php echo $m['date_movement'] ?>" />
 								<?php } ?>
 							</td>
 							<td class="text-left" <?php if (isset($m['color'])){ ?>style="background-color: <?php echo $m['color'] ?>"<?php } ?>>
@@ -95,9 +93,6 @@
 								 $(function() {
 									$("#modify_date_end_<?php echo $m['id_movement'] ?>").datepicker({ dateFormat: 'yy-mm-dd' });
 								});
-								 $(function() {
-									$("#modify_date_<?php echo $m['id_movement'] ?>").datepicker({ dateFormat: 'yy-mm-dd' });
-								});
 							});
 						</script>
 						<?php $total = ($m['debit'] == "1") ? (float)$total - (float)$m['calc_amount'] : (float)$total + (float)$m['calc_amount'] ?>
@@ -122,4 +117,5 @@
 		});
 	});
 </script>
+</div>
 <?php include "footer.php" ?>

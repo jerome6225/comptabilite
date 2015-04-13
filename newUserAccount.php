@@ -22,8 +22,11 @@
 			<button type="button" class="btn btn-primary btn-sm" name="submit_new_customer_user_account" id="submit_new_customer_user_account"><span class="glyphicon glyphicon-user"></span> Modifier</button>
 		</section>
 	</form>
+</div>
 <script type="text/javascript">
-	createNewUser();
+	$(function(){
+		createNewUser();
+	});
 </script>
 
 <?php include "footer.php" ?>

@@ -26,9 +26,11 @@
 			<button type="button" class="btn btn-primary btn-sm" name="submit_change_password" id="submit_change_password"><span class="glyphicon glyphicon-thumbs-up"></span> Modifier</button>
 		</section>
 	</form>
+</div>
 <script type="text/javascript">
 	$(function(){
 		changePassword();
 	});
 </script>
+
 <?php include "footer.php" ?>

@@ -10,7 +10,7 @@
 <?php }else{ ?>
 	<?php include dirname(__FILE__)."/controllers/movementController.php" ?>
 	<div class="row col-sm-offset-1 col-sm-10">
-		<form>
+		<form id="form_choice_account">
 			<div id="columns" class="row">
 				<legend>Saisir une nouvelle entr&eacute;e</legend>
 			    <section class="col-sm-5">

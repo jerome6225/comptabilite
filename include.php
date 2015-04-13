@@ -4,6 +4,7 @@
 	include dirname(__FILE__)."/config/config.php";
 	include dirname(__FILE__)."/classes/db/Db.php";
 	include dirname(__FILE__)."/classes/Account.php";
+	include dirname(__FILE__)."/classes/Admin.php";
 	include dirname(__FILE__)."/classes/AccountBalance.php";
 	include dirname(__FILE__)."/classes/CategoryMovement.php";
 	include dirname(__FILE__)."/classes/IdUserAccountIdAccount.php";
