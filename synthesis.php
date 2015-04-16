@@ -6,16 +6,18 @@
 <div class="row col-sm-offset-1 col-sm-10">
 	<legend>Relev&eacute; des comptes</legend>
 	<form class="form-inline" name="form_synthesis_date" id="form_synthesis_date" method="POST" action="synthesis.php">
-		<legend>S&eacute;lectionnez vos dates de relev&eacute;</legend>
-		<div class="form-group has-feedback" id="div_date_begin">
-	    	<label for="date_begin">D&eacute;but : </label>
-			<input type="text" placeholder="D&eacute;but" class="form-control" name="date_begin" id="date_begin" />
-			<span class="glyphicon form-control-feedback" aria-hidden="true" id="span_date_begin"></span>
+		<legend>S&eacute;lectionnez un mois pour voir relev&eacute;</legend>
+		<div class="form-group has-feedback" id="div_month">
+	    	<label for="month">Mois : </label>
+	    	<select class="" id="month" name="month">
+	    		<?php foreach ($months as $key => $month){ ?><option value="<?php echo $key ?>"><?php echo $month ?></option><?php } ?>
+	    	</select>
 		</div>
-		<div class="form-group has-feedback" id="div_date_end">
-	    	<label for="date_end">Fin : </label>
-			<input type="text" placeholder="Fin" class="form-control" name="date_end" id="date_end" />
-			<span class="glyphicon form-control-feedback" aria-hidden="true" id="span_date_end"></span>
+		<div class="form-group has-feedback" id="div_year">
+	    	<label for="year">Ann&eacute; : </label>
+	    	<select class="" id="year" name="year">
+	    		<?php foreach ($years as $year){ ?><option value="<?php echo $year ?>"><?php echo $year ?></option><?php } ?>
+	    	</select>
 		</div>
 		<button type="submit" class="btn btn-primary btn-sm" name="submit_new_customer_info" id="submit_new_customer_info"><span class="glyphicon glyphicon-calendar"></span> Voir</button>
 	</form>

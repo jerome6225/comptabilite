@@ -17,8 +17,9 @@
 			LEFT JOIN account as a ON(m.id_account = a.id_account)
 			WHERE m.id_user = ".$idUser." 
 			AND ((m.date_movement BETWEEN '".$dateBegin."' AND '".$dateEnd."')
-				OR (m.monthly = 1 AND (m.date_movement < '".$dateEnd."' AND (m.date_end > '".$dateEnd."' OR m.date_end = '0000-00-00'))
-				OR (m.annual = 1 OR nb_month >= '".$month."')))
+				OR (m.monthly = 1 
+					AND ((m.date_movement < '".$dateEnd."' AND (m.date_end > '".$dateEnd."' OR m.date_end = '0000-00-00'))
+					OR (m.annual = 1 OR nb_month >= '".$month."'))))
 			ORDER BY m.date_movement ASC");
 
 			$sql->setFetchMode(PDO::FETCH_ASSOC);
@@ -31,13 +32,13 @@
 				$movement['amount']                 = number_format((float)$res['amount'], 2);
 				$movement['debit']                  = $res['debit'];
 				$movement['color_debit']            = ($res['debit']) ? 'text-danger' : 'text-success';
-				$movement['date_movement']          = formatDate($res['date_movement'], $res['monthly']);
+				$movement['date_movement']          = Tools::formatDate($res['date_movement'], $month, $res['monthly']);
 				$movement['monthly']                = $res['monthly'];
 				$movement['annual']                 = $res['annual'];
 				$movement['name_movement']          = $res['name_movement'];
 				$movement['movement_category']      = $res['name_category_movement'];
 				$movement['date_begin']             = $res['date_movement'];
-				$movement['date_end']               = formatDate($res['date_end']);
+				$movement['date_end']               = Tools::formatDate($res['date_end']);
 				$movement['nb_month']               = $res['nb_month'];
 				$movement['id_movement']            = $res['id_movement'];
 				$movement['id_account']             = $res['id_account'];
@@ -146,5 +147,25 @@
 			);
 
 			return Db::insert('movement', $fields);
+		}
+
+		public static function getYearsMovement($idUser)
+		{
+			$pdo = Db::getInstance();
+
+			$sql = $pdo->query("SELECT DISTINCT date_movement
+			FROM movement 
+			WHERE id_user = ".$idUser);
+
+			$sql->setFetchMode(PDO::FETCH_ASSOC);
+
+			$years = array();
+			while($res = $sql->fetch())
+			{
+				$date = explode("-", $res['date_movement']);
+				$years[] = $date[0];
+			}
+
+			return $years;
 		}
 	}

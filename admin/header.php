@@ -5,9 +5,13 @@
 	<script type="text/javascript" src="js/ajax.js"></script>
 	<script type="text/javascript" src="js/function.js"></script>
 	<script type="text/javascript" src="../js/jquery-datepicker.min.js"></script>
+	<script src="../bootstrap/js/bootstrap.min.js"></script>
+
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link rel="stylesheet" type="text/css" href="../css/jquery-ui.theme.css">
 	<link rel="stylesheet" type="text/css" href="../css/jquery-ui.structure.css">
+	<link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.min.css">
+	
 	<title>Admin Comptabilit&eacute;</title>
 </head>
 <body id="body_admin">
