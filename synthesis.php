@@ -102,7 +102,7 @@
 				
 					<tr>
 						<td class="text-right" colspan="4">TOTAL DES MOUVEMENTS</td>
-						<td class="text-right <?php if ((float)$total > 0){ ?>text-success<?php }else{ ?>text-danger<?php } ?>"><?php echo $total ?></td>
+						<td class="text-right <?php if ((float)$total > 0){ ?>text-success<?php }else{ ?>text-danger<?php } ?>"><?php echo round($total, 2, PHP_ROUND_HALF_UP) ?></td>
 					</tr>
 				</table>
 			</div>
