@@ -502,3 +502,68 @@ function movement()
 		}
 	});
 }
+
+function createNewEmprunt()
+{
+	$(document).on("click", "#submit_new_emprunt", function(e){
+		e.preventDefault();
+
+		var checkName               = checkInput("name_emprunt");
+		var checkSomme              = checkFloatVal("somme_emprunt");
+		var checkDate               = checkInput("date_emprunt");
+		var checkRembOrEtalonnement = checkIfOneIsOk("somme_rembourse", "etalonnement");
+
+		if (checkName && checkSomme && checkDate && checkRembOrEtalonnement)
+		{
+			$.ajax({
+				type: "POST",
+				url: "ajax/emprunt.php",
+				data: {
+					name: $("#name_emprunt").val(),
+					somme: $("#somme_emprunt").val(),
+					date: $("#date_emprunt").val(),
+					remboursement: $("#somme_rembourse").val(),
+					etalonnement: $("#etalonnement").val(),
+				},
+				success: function(msg){
+					if (msg == 'error')
+					{
+						alert('Une erreur est survenu durant l\'enregistrement');
+					}
+					else
+					{
+						clear_form_elements("#form_new_emprunt");
+						document.location.href = "emprunt.php";
+					}
+						
+				}
+			});
+		}
+	});
+}
+
+function changeRemboursementStatus(id_remboursement, status)
+{
+	$.ajax({
+		type: "POST",
+		url: "ajax/statusRemboursement.php",
+		data: {
+			idRemboursement: id_remboursement,
+			status: status,
+		},
+		success: function(msg){
+			if (msg == 'error')
+			{
+				alert('Une erreur est survenu durant l\'enregistrement');
+			}
+			else
+			{
+				if (status == 1)
+					$("#rembourse_" + id_remboursement).html('<span class="glyphicon glyphicon-remove text-danger"></span>');
+				else
+					$("#rembourse_" + id_remboursement).html('<span class="glyphicon glyphicon-ok text-success"></span>');
+			}
+				
+		}
+	});
+}

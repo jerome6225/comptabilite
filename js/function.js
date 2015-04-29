@@ -69,6 +69,23 @@ function checkIsSame(input1, input2)
 		
 }
 
+function checkIfOneIsOk(input1, input2)
+{
+	if (($("#" + input1).val() == '' &&  $("#" + input2).val() == '') || ($("#" + input1).val() != '' &&  $("#" + input2).val() != ''))
+	{
+		isInputNotOk(input1);
+		$("#choice_one").removeClass("sr-only");
+		return isInputNotOk(input2);
+	}
+	else
+	{
+		isInputOK(input1);
+		$("#choice_one").addClass("sr-only");
+		return isInputOK(input2);
+	}
+		
+}
+
 function isInputNotOk(input)
 {
 	$("#div_" + input).removeClass("has-success").addClass("has-error");

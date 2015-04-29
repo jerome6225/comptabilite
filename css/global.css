@@ -21,6 +21,9 @@ body {
   text-decoration: none;
 }
 
+.cursor_pointer {
+  cursor: pointer;
+}
 @media (min-width: 768px) {
 	.dropdown:hover .dropdown-menu {
 		display: block;

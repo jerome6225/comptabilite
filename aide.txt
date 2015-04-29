@@ -17,12 +17,14 @@ ligne de commande:
 	redemarrer le service -> sudo service cron restart
 
 Debug:
+	- dans Releve de compte:
+		Lors de la modification d'une somme ou de la suppression mettre à jour le total
     - dans Bilan:
     	Warning dans
     		"Undefined index: courant*35 in /var/www/comptabiliteClass/accountStatement .php on line 52, referer: http://jerome.ratel.stomp9.fr/comptabiliteClass/synthesis.php" et 
     		"Undefined index: courant*35 in /var/www/comptabiliteClass/accountStatement .php on line 57, referer: http://jerome.ratel.stomp9.fr/comptabiliteClass/synthesis.php"
     		lorsque tous les utilisateurs n'ont pas de saisie.
-    - dans Prelevement mensuel:
+    - dans Depense mensuel:
     	Warning dans:
     		"Undefined offset: 0 in /var/www/comptabiliteClass/controllers/prelevementMensuelController.php on line 73, referer: http://jerome.ratel.stomp9.fr/comptabiliteClass/accountStatement%20.php"
     		"Undefined variable: depenseCommune in /var/www/comptabiliteClass/controllers/prelevementMensuelController.php on line 80, referer: http://jerome.ratel.stomp9.fr/comptabiliteClass/accountStatement%20.php"
@@ -50,7 +52,7 @@ boite à idées:
 			- calculer la part de chacun en fonction de ses revenus.
 
 		faire une page remboursement si jamais on emprunte de l'argent à quelqu'un avec un suivie des remboursements.
-			- creer une table empreint (id_emprunt, name_emprunt, amount_emprunt, date_emprunt)
+			- creer une table emprunt (id_emprunt, name_emprunt, amount_emprunt, date_emprunt)
 			- creer une table remboursement (id_remboursement, id_emprunt, date_remboursement)
 			- creer une interface par utilisateur avec un systeme d'onglet (voir les modules mdweb partie admin)
 			- montant total à rembourser

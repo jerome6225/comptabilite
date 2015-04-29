@@ -35,15 +35,16 @@
 							<li class="divider"></li><li><a href="synthesis.php">Relev&eacute; des comptes</a></li>
 							<li class="divider"></li><li><a href="accountStatement .php">Synth&egrave;se</a></li>
 							<li class="divider"></li><li><a href="prelevementMensuel.php">D&eacute;pense mensuel</a></li>
+							<li class="divider"></li><li><a href="emprunt.php">Emprunt</a></li>
 						</ul>
 					</li>
 	          		<li class="dropdown"><a data-toggle="dropdown" class="dropdown-hover" href="#">Bonjour <?php echo $_SESSION['login'] ?> <b class="caret"></b></a>
 	          			<ul class="dropdown-menu">
-							<li><a href="passwordChange.php"> <span class="compta_span_select"></span> Changer mot de passe</a></li>
-							<li class="divider"></li><li><a href="newUserAccount.php"> <span class="compta_span_select"></span> Nouvel utilisateur</a></li>
-							<li class="divider"></li><li><a href="changeUserAccount.php"> <span class="compta_span_select"></span> Modifier utilisateur</a></li>
-							<li class="divider"></li><li><a href="newAccount.php"> <span class="compta_span_select"></span> Ajouter un compte</a></li>
-							<li class="divider"></li><li><a href="changeAccount.php"> <span class="compta_span_select"></span> Modifier un compte</a></li>
+							<li><a href="passwordChange.php">Changer mot de passe</a></li>
+							<li class="divider"></li><li><a href="newUserAccount.php">Nouvel utilisateur</a></li>
+							<li class="divider"></li><li><a href="changeUserAccount.php">Modifier utilisateur</a></li>
+							<li class="divider"></li><li><a href="newAccount.php">Ajouter un compte</a></li>
+							<li class="divider"></li><li><a href="changeAccount.php">Modifier un compte</a></li>
 						</ul>
 	          		</li>
 	          		<li><a href="#" id="account_name_menu"><?php if (isset($_SESSION['id_account'])) { echo $_SESSION['account_name']; } ?></a></li>

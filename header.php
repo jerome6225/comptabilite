@@ -15,6 +15,7 @@
 	<link rel="stylesheet/less" type="text/css" href="css/popup.less">-->
 	<link rel="stylesheet" type="text/css" href="css/jquery-ui.theme.css">
 	<link rel="stylesheet" type="text/css" href="css/jquery-ui.structure.css">
+	<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="css/global.css">
 
