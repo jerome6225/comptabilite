@@ -24,6 +24,11 @@ body {
 .cursor_pointer {
   cursor: pointer;
 }
+
+.info_emprunt {
+  margin: 25px 0 110px 0;
+}
+
 @media (min-width: 768px) {
 	.dropdown:hover .dropdown-menu {
 		display: block;

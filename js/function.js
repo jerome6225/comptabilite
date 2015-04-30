@@ -103,3 +103,17 @@ function isInputOK(input)
 	return true;
 }
 
+function newEmprunt()
+{
+	$(document).on("click", "#btn_hide_form_emprunt", function(){
+		if ($('#form_hide_emprunt').css('display') == 'none')
+			$("#form_hide_emprunt").show('slow');
+		else
+			$("#form_hide_emprunt").hide('slow');
+	});
+}
+
+function modifyRemboursement(id_remboursement)
+{
+	
+}

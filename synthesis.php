@@ -77,11 +77,11 @@
 								<input type="text" class="sr-only input_hidden_<?php echo $m['id_movement'] ?>" id="modify_amount_<?php echo $m['id_movement'] ?>" value="<?php echo $m['amount'] ?>" />
 							</td>
 							<td class="cursor_pointer" id="modifier_<?php echo $m['id_movement'] ?>">
-								<span class="span_modify_movement_<?php echo $m['id_movement'] ?>" onclick="showModifyMovement('<?php echo $m['id_movement'] ?>');"><img src="img/modifier.png" width="16"/></span>
+								<span class="span_modify_movement_<?php echo $m['id_movement'] ?> glyphicon glyphicon-edit text-primary cursor_pointer" onclick="showModifyMovement('<?php echo $m['id_movement'] ?>');"></span>
 								<button type="button" class="btn btn-primary btn-sm sr-only input_hidden_<?php echo $m['id_movement'] ?>" onclick="validModify('<?php echo $m['id_movement'] ?>', '<?php echo $m['monthly'] ?>');" id="modify_valid_<?php echo $m['id_movement'] ?>"><span class="glyphicon glyphicon-pencil"></span> Valider</button>
 							</td>
 							<td class="cursor_pointer" id="supprimer_<?php echo $m['id_movement'] ?>">
-								<span class="span_modify_movement_<?php echo $m['id_movement'] ?>" onclick="deleteMovement('<?php echo $m['id_movement'] ?>');"><img src="img/supprimer.png" width="16" /></span>
+								<span class="span_modify_movement_<?php echo $m['id_movement'] ?> glyphicon glyphicon-trash text-danger cursor_pointer" onclick="deleteMovement('<?php echo $m['id_movement'] ?>');"></span>
 								<button type="button" class="btn btn-primary btn-sm sr-only input_hidden_<?php echo $m['id_movement'] ?>" onclick="cancelModify('<?php echo $m['id_movement'] ?>');" id="modify_cancel_<?php echo $m['id_movement'] ?>"><span class="glyphicon glyphicon-remove"></span> Annuler</button>
 							</td>
 						</tr>
