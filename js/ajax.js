@@ -442,32 +442,32 @@ function showUserAccountForm(userInput, divUserAccountForm, current)
 	});
 }
 
-function movement()
+function movement(id_account)
 {
-	$(document).on('click', '#select_monthly', function(e){
-		if ($("#select_monthly").val() == '1')
-			$("#div_monthly").show();
+	$(document).on('click', '#select_monthly_' + id_account, function(e){
+		if ($("#select_monthly_" + id_account).val() == '1')
+			$("#div_monthly_" + id_account).show();
 		else
-			$("#div_monthly").hide();
+			$("#div_monthly_" + id_account).hide();
 	});
 
-	$(document).on('click', '#select_annual', function(e){
-		if ($("#select_annual").val() == '0')
-			$("#div_annual").show();
+	$(document).on('click', '#select_annual_' + id_account, function(e){
+		if ($("#select_annual_" + id_account).val() == '0')
+			$("#div_annual_" + id_account).show();
 		else
-			$("#div_annual").hide();
+			$("#div_annual_" + id_account).hide();
 	});
 
-	$(document).on("click", "#submit_select_choice_account", function(e){
+	$(document).on("click", "#submit_select_choice_account_" + id_account, function(e){
 		e.preventDefault();
 
-		var checkAmount      = checkFloatVal("amount");
-		var checkIntitule    = checkInput("intitule");
-		var checkDate        = checkInput("date_movement");
+		var checkAmount      = checkFloatVal("amount_" + id_account);
+		var checkIntitule    = checkInput("intitule_" + id_account);
+		var checkDate        = checkInput("date_movement_" + id_account);
 		var checkInputAnnual = true;
 
-		if ($("#select_monthly").val() == 1 && $("#select_annual").val() == 0)
-			checkInputAnnual = checkIntVal("input_annual");
+		if ($("#select_monthly_" + id_account).val() == 1 && $("#select_annual_" + id_account).val() == 0)
+			checkInputAnnual = checkIntVal("input_annual_" + id_account);
 
 		if (checkAmount && checkIntitule && checkDate && checkInputAnnual)
 		{
@@ -475,16 +475,17 @@ function movement()
 				type: "POST",
 				url: "ajax/newMovement.php",
 				data: {
-					amount: $("#amount").val(),
-					intitule: $("#intitule").val(),
-					category: $("#select_type_movement").val(),
-					debit: $("#select_debit").val(),
-					date: $("#date_movement").val(),
-					monthly: $("#select_monthly").val(),
-					annual: $("#select_annual").val(),
-					date_end: $("#date_end_movement").val(),
-					nb_month: $("#input_annual").val(),
-					id_user: $("#select_user_movement").val(),
+					amount: $("#amount_" + id_account).val(),
+					intitule: $("#intitule_" + id_account).val(),
+					category: $("#select_type_movement_" + id_account).val(),
+					debit: $("#select_debit_" + id_account).val(),
+					date: $("#date_movement_" + id_account).val(),
+					monthly: $("#select_monthly_" + id_account).val(),
+					annual: $("#select_annual_" + id_account).val(),
+					date_end: $("#date_end_movement_" + id_account).val(),
+					nb_month: $("#input_annual_" + id_account).val(),
+					id_user: $("#select_user_movement_" + id_account).val(),
+					id_account: id_account,
 				},
 				success: function(msg){
 					if (msg == 'error_movement')
@@ -493,8 +494,9 @@ function movement()
 					}
 					else
 					{
-						clear_form_elements("#form_choice_account");
-						$(".title_choice_account").show().html(msg);
+						clear_form_elements("#form_choice_account" + id_account);
+						window.location.reload();
+						//$(".title_choice_account_" + id_account).show().html(msg);
 					}
 						
 				}

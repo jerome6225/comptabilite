@@ -1,11 +1,11 @@
 <?php
 	include dirname(__FILE__)."/../include.php";
 
-	$addMovement = Movement::addMovement($_SESSION['id_user'], $_SESSION['id_account'], $_POST['id_user'], $_POST['amount'], $_POST['debit'], $_POST['date'], $_POST['monthly'], $_POST['annual'], $_POST['intitule'], $_POST['category'], $_POST['date_end'], $_POST['nb_month']);
+	$addMovement = Movement::addMovement($_SESSION['id_user'], $_POST['id_account'], $_POST['id_user'], $_POST['amount'], $_POST['debit'], $_POST['date'], $_POST['monthly'], $_POST['annual'], $_POST['intitule'], $_POST['category'], $_POST['date_end'], $_POST['nb_month']);
 	
 	if ($addMovement)
 	{
-		$accountBalance = accountBalance::getAccountBalance($_SESSION['id_account']);
+		$accountBalance = accountBalance::getAccountBalance($_POST['id_account']);
 
 		if ($_POST['date'] <= date("Y-m-d"))
 		{
@@ -18,20 +18,9 @@
 		
 		$newTotalBalance   = ($_POST['debit'] == "1") ? (float)$accountBalance->balance_total - (float)$_POST['amount'] : (float)$accountBalance->balance_total + (float)$_POST['amount'];
 
-		$update = AccountBalance::updateAccountBalance($_SESSION['id_account'], $newCurrentBalance, $newTotalBalance);
+		$update = AccountBalance::updateAccountBalance($_POST['id_account'], $newCurrentBalance, $newTotalBalance);
 		
-		if (!isset($_SESSION['nb_movement']))
-		{
-			$_SESSION['nb_movement'] = 1;
-			$movementTitle = $_SESSION['nb_movement'].' entr&eacute;e';
-		}
-		else
-		{
-			$_SESSION['nb_movement'] += 1;
-			$movementTitle = $_SESSION['nb_movement'].' entr&eacute;es';
-		}
-
-		echo 'Vous avez &eacute;ffectu&eacute; '.$movementTitle;
+		echo 'ok';
 		exit;
 	}
 	else

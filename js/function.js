@@ -113,7 +113,24 @@ function newEmprunt()
 	});
 }
 
+function toggleForm(form)
+{
+	$(document).on("click", "#btn_" + form, function(){
+		$("#" + form).toggleClass('sr-only', 1000);
+	});
+}
+
 function modifyRemboursement(id_remboursement)
 {
-	
+	$(".span_modify_emprunt_" + id_remboursement).addClass("sr-only");
+	$(".input_hidden_" + id_remboursement).removeClass("sr-only");
+	alert($("#title_remboursement").html());
+	$("#title_remboursement").html("");
+}
+
+function cancelModifRemboursement(id_remboursement)
+{
+	$(".span_modify_emprunt_" + id_remboursement).removeClass("sr-only");
+	$(".input_hidden_" + id_remboursement).addClass("sr-only");
+	$("#title_remboursement").html("test");
 }

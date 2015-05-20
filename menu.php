@@ -31,8 +31,8 @@
 	          <?php }else{ ?>
 	          		<li class="dropdown"><a data-toggle="dropdown" class="dropdown-toggle" href="#">Gestion des comptes <b class="caret"></b></a>
 						<ul class="dropdown-menu">
-							<li><a href="movement.php">Nouvelle entr&eacute;e</a></li>
-							<li class="divider"></li><li><a href="synthesis.php">Relev&eacute; des comptes</a></li>
+							<!--<li><a href="movement.php">Nouvelle entr&eacute;e</a></li>-->
+							<li></li><li><a href="synthesis.php">Relev&eacute; des comptes</a></li>
 							<li class="divider"></li><li><a href="accountStatement .php">Synth&egrave;se</a></li>
 							<li class="divider"></li><li><a href="prelevementMensuel.php">D&eacute;pense mensuel</a></li>
 							<li class="divider"></li><li><a href="emprunt.php">Emprunt</a></li>

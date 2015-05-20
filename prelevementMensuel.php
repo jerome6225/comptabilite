@@ -6,8 +6,8 @@
 
 <div class="row col-sm-offset-1 col-sm-10">
 	<legend>D&eacute;pense mensuel</legend>
-	<form name="form_prelevement" id="form_prelevement" method="POST" action="prelevementMensuel.php">
-		<legend>Saisissez une somme pour les d&eacute;penses communes</legend>
+	<legend>Saisissez une somme pour les d&eacute;penses communes <span id="btn_form_prelevement" class="glyphicon glyphicon-plus text-primary cursor_pointer"></span></legend>
+	<form class="sr-only" name="form_prelevement" id="form_prelevement" method="POST" action="prelevementMensuel.php">
 		<div class="form-group has-feedback" id="div_somme">
 	    	<label for="somme">Somme : </label>
 			<input type="text" placeholder="Somme" class="form-control" name="somme" id="somme" />
@@ -15,6 +15,11 @@
 		</div>
 		<button type="submit" class="btn btn-primary btn-sm" name="submit_form_prelevement" id="submit_form_prelevement"><span class="glyphicon glyphicon-credit-card"></span> Calculer</button>
 	</form>
+	<script type="text/javascript">
+		$(function(){
+			toggleForm('form_prelevement');
+		});
+	</script>
 	<br /><br />
 	<legend>D&eacute;pense mensuel par compte</legend>
 	<ul class="nav nav-tabs nav-justified">

@@ -5,8 +5,8 @@
 
 <div class="row col-sm-offset-1 col-sm-10">
 	<legend>Relev&eacute; des comptes</legend>
-	<form class="form-inline" name="form_synthesis_date" id="form_synthesis_date" method="POST" action="synthesis.php">
-		<legend>S&eacute;lectionnez un mois pour voir relev&eacute;</legend>
+	<legend>S&eacute;lectionnez un mois pour voir relev&eacute; <span id="btn_form_synthesis_date" class="glyphicon glyphicon-plus text-primary cursor_pointer"></span></legend>
+	<form class="form-inline sr-only" name="form_synthesis_date" id="form_synthesis_date" method="POST" action="synthesis.php">
 		<div class="form-group has-feedback" id="div_month">
 	    	<label for="month">Mois : </label>
 	    	<select class="" id="month" name="month">
@@ -26,7 +26,7 @@
 	<ul class="nav nav-tabs nav-justified">
 		<?php $class = '' ?>
 		<?php $i = 0 ?>
-		<?php foreach ($movements as $key => $movement) {?>
+		<?php foreach ($movements as $key => $movement) { ?>
 			<?php $class = ($class == '') ? 'active' : 'disable'; ?>
 			<li class="<?php echo $class ?>"><a href="#<?php echo $i ?>" data-toggle="tab"><?php echo $key ?></a></li>
 			<?php $i++ ?>
@@ -35,7 +35,8 @@
 	<div class="tab-content">
 		<?php $classContent = '' ?>
 		<?php $j = 0 ?>
-		<?php foreach ($movements as $key => $movement) {?>
+		<?php foreach ($movements as $key => $movement) { ?>
+			<?php $id_account = $movement[0]["id_account"] ?>
 			<?php $classContent = ($classContent == '') ? 'active' : 'blabla'; ?>
 			<div class="table-responsive tab-pane <?php echo $classContent ?>" id="<?php echo $j ?>">
 				<br /><br />
@@ -106,6 +107,97 @@
 					</tr>
 				</table>
 			</div>
+			<div>
+				<legend>Saisir une nouvelle entr&eacute;e <span id="btn_form_choice_account_<?php echo $id_account ?>" class="glyphicon glyphicon-plus text-primary cursor_pointer"></span></legend>
+				<form id="form_choice_account_<?php echo $id_account ?>" class="sr-only">
+					<div id="columns" class="row">
+					    <section class="col-sm-5">
+					    	<div class="form-group has-feedback" id="div_amount_<?php echo $id_account ?>">
+						    	<label for="amount_<?php echo $id_account ?>">Montant : </label>
+								<input type="text" placeholder="Montant" class="form-control" name="amount_<?php echo $id_account ?>" id="amount_<?php echo $id_account ?>" />
+								<span class="glyphicon form-control-feedback" aria-hidden="true" id="span_amount_<?php echo $id_account ?>"></span>
+							</div>
+							<div class="form-group has-feedback" id="div_intitule_<?php echo $id_account ?>">
+								<label for="intitule_<?php echo $id_account ?>">Intitul&eacute; : </label>
+								<input type="text" placeholder="Intitul&eacute;" class="form-control" name="intitule_<?php echo $id_account ?>" id="intitule_<?php echo $id_account ?>" />
+								<span class="glyphicon form-control-feedback" aria-hidden="true" id="span_intitule_<?php echo $id_account ?>"></span>
+							</div>
+							<div class="form-group has-feedback" id="div_type_movement_<?php echo $id_account ?>">
+								<label for="select_type_movement_<?php echo $id_account ?>">Cat&eacute;gorie : </label>
+								<select class="form-control" id="select_type_movement_<?php echo $id_account ?>" name="select_type_movement_<?php echo $id_account ?>">
+									<?php foreach ($categoryMovement as $c) echo '<option value="'.$c['id_category_movement'].'">'.$c['name_category_movement'].'</option>' ?>
+								</select>
+							</div>
+							<div class="form-group has-feedback" id="div_select_debit_<?php echo $id_account ?>">
+								<label for="select_debit_<?php echo $id_account ?>">Type : </label>
+								<select class="form-control" id="select_debit_<?php echo $id_account ?>" name="select_debit_<?php echo $id_account ?>">
+									<option value="0">Revenus</option>
+									<option value="1">D&eacute;pense</option>
+								</select>
+							</div>
+							<div class="form-group has-feedback" id="div_date_movement_<?php echo $id_account ?>">
+								<label for="date_movement_<?php echo $id_account ?>">Date : </label>
+								<input type="text" placeholder="Date" class="form-control" name="date_movement_<?php echo $id_account ?>" id="date_movement_<?php echo $id_account ?>" />
+								<span class="glyphicon form-control-feedback" aria-hidden="true" id="span_date_movement_<?php echo $id_account ?>"></span>
+							</div>
+						</section>
+						<section class="col-sm-5">
+							<div class="form-group has-feedback" id="div_select_user_movement_<?php echo $id_account ?>">
+								<label for="select_user_movement_<?php echo $id_account ?>">Assigner &agrave; : </label>
+								<select class="form-control" id="select_user_movement_<?php echo $id_account ?>" name="select_user_movement_<?php echo $id_account ?>">
+									<option value="0">Tous le monde</option>
+									<?php foreach ($users as $u) echo '<option value="'.$u['id_user_account'].'">'.$u['name_user_account'].'</option>' ?>
+								</select>
+							</div>
+							<div class="form-group has-feedback" id="div_select_monthly_<?php echo $id_account ?>">
+								<label for="select_monthly_<?php echo $id_account ?>">P&eacute;riodicit&eacute; : </label>
+								<select class="form-control" id="select_monthly_<?php echo $id_account ?>" name="select_monthly_<?php echo $id_account ?>">
+									<option value="0">Une seule fois</option>
+									<option value="1">Tous les mois</option>
+								</select>
+							</div>
+							<div id="div_monthly_<?php echo $id_account ?>" style="display: none;">
+								<div class="form-group has-feedback" id="div_date_end_movement_<?php echo $id_account ?>">
+									<label for="date_end_movement_<?php echo $id_account ?>">Date de fin : </label>
+									<input type="text" placeholder="Date de fin" class="form-control" name="date_end_movement_<?php echo $id_account ?>" id="date_end_movement_<?php echo $id_account ?>" />
+									<span class="glyphicon form-control-feedback" aria-hidden="true" id="span_date_end_movement_<?php echo $id_account ?>"></span>
+								</div>
+								<div class="form-group has-feedback" id="div_select_annual_<?php echo $id_account ?>">
+									<label for="select_annual_<?php echo $id_account ?>">Mouvement annuel : </label><br />
+									<select class="input_login" id="select_annual_<?php echo $id_account ?>" name="select_annual_<?php echo $id_account ?>">
+										<option value="1">Annuel</option>
+										<option value="0">Sur quelques mois</option>
+									</select>
+								</div>
+							</div>
+							<div id="div_annual_<?php echo $id_account ?>" style="display: none;">
+								<div class="form-group has-feedback" id="div_input_annual_<?php echo $id_account ?>">
+									<label for="input_annual_<?php echo $id_account ?>">Combien de mois : </label>
+									<input type="text" placeholder="Date de fin" class="form-control" name="input_annual_<?php echo $id_account ?>" id="input_annual_<?php echo $id_account ?>" />
+									<span class="glyphicon form-control-feedback" aria-hidden="true" id="span_input_annual_<?php echo $id_account ?>"></span>
+								</div>
+							</div>
+						</section>
+					</div>
+					<div class="row">
+						<button type="button" class="btn btn-primary btn-sm" name="submit_select_choice_account_<?php echo $id_account ?>" id="submit_select_choice_account_<?php echo $id_account ?>"><span class="glyphicon glyphicon-plus"></span> Enregistrer</button>
+					</div>
+				</form>
+			</div>
+
+			<script type="text/javascript">
+				$(function() {
+					$(function() {
+						$("#date_movement_<?php echo $id_account ?>").datepicker({ dateFormat: 'yy-mm-dd' });
+					});
+					$(function() {
+						$("#date_end_movement_<?php echo $id_account ?>").datepicker({ dateFormat: 'yy-mm-dd' });
+					});
+
+					movement("<?php echo $id_account ?>");
+					toggleForm("form_choice_account_<?php echo $id_account ?>");
+				});
+			</script>
 			<?php $j++ ?>
 		<?php } ?>
 	</div>
@@ -117,6 +209,8 @@
 		 $(function() {
 			$("#date_end").datepicker();
 		});
+
+		toggleForm('form_synthesis_date');
 	});
 </script>
 </div>
