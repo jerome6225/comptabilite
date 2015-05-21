@@ -64,6 +64,11 @@ boite à idées:
 
 		page suppression de compte
 
+		page chèque:
+		 chèque avec date:
+		 	à la date indiqué le chèque est débité
+		 chèque sans date:
+		 	le jour où il est débité on peut cocher débité
 
 
 	interface admin:

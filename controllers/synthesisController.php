@@ -15,10 +15,20 @@
 			$dateBegin = $_POST['year'].'-'.$month.'-1';
 			$dateEnd   = $_POST['year'].'-'.$month.'-'.$nbDays;
 		}
+		$accounts = Account::getAccounts($_SESSION['id_user']);
 
-		$getMovements = Movement::getMovements($_SESSION['id_user'], $dateBegin, $dateEnd, $month);
+		$movements = array();
 
-		$movements  = $getMovements['movements'];
+		foreach ($accounts as $account)
+		{
+			$movementsAccount = Movement::getMovementsAccount($account["id_account"], $dateBegin, $dateEnd, $month);
+
+			$movements[$account["name"].'*'.$account["id_account"]] = $movementsAccount['movements'];
+		}
+
+		//$getMovements = Movement::getMovements($_SESSION['id_user'], $dateBegin, $dateEnd, $month);
+
+		//$movements  = $getMovements['movements'];
 
 		$categoryMovement = CategoryMovement::getCategoriesMovement();
 
