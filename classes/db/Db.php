@@ -48,7 +48,7 @@ class Db extends PDO{
 
         $db = self::getInstance();
 
-        $pdo = $db->prepare("SELECT ".$fields." FROM ".$table." ".$selectWhere);
+        $pdo = $db->prepare("SELECT ".$fields." FROM `".$table."` ".$selectWhere);
 
         if ($where)
             foreach ($where as $key => $wh)
@@ -94,7 +94,7 @@ class Db extends PDO{
         }
 
         $db  = Db::getInstance();
-        $ins = $db->prepare("INSERT INTO ".$table." (".rtrim($insert, ',').") VALUES (".rtrim($values, ',').")");
+        $ins = $db->prepare("INSERT INTO `".$table."` (".rtrim($insert, ',').") VALUES (".rtrim($values, ',').")");
 
         foreach ($fields as $key => $field)
             foreach ($field as $k => &$f)
@@ -131,7 +131,7 @@ class Db extends PDO{
 
 
         $db  = Db::getInstance();
-        $up = $db->prepare("UPDATE ".$table." SET ".rtrim($update, ',')." ".$updateWhere);
+        $up = $db->prepare("UPDATE `".$table."` SET ".rtrim($update, ',')." ".$updateWhere);
 
         foreach ($fields as $key => $field)
             foreach ($field as $k => &$f)
@@ -153,7 +153,7 @@ class Db extends PDO{
                 $deleteWhere .= ($deleteWhere == '') ? 'WHERE '.$key.' = :'.$key : ' AND '.$key.' = :'.$key;
 
         $db  = Db::getInstance();
-        $delete = $db->prepare("DELETE FROM ".$table." ".$deleteWhere);
+        $delete = $db->prepare("DELETE FROM `".$table."` ".$deleteWhere);
 
         if ($where)
             foreach ($where as $key => $wh)

@@ -19,7 +19,7 @@
 	    		<?php foreach ($years as $year){ ?><option value="<?php echo $year ?>"><?php echo $year ?></option><?php } ?>
 	    	</select>
 		</div>
-		<button type="submit" class="btn btn-primary btn-sm" name="submit_new_customer_info" id="submit_new_customer_info"><span class="glyphicon glyphicon-calendar"></span> Voir</button>
+		<button type="submit" class="btn btn-primary btn-sm" name="submit_date_releve_info" id="submit_date_releve_info"><span class="glyphicon glyphicon-calendar"></span> Voir</button>
 	</form>
 	<br /><br />
 	<legend>Relev&eacute; de compte</legend>

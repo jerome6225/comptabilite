@@ -505,6 +505,120 @@ function movement(id_account)
 	});
 }
 
+function addCheck(id_account)
+{
+	$(document).on("click", "#submit_check_" + id_account, function(e){
+		e.preventDefault();
+
+		var checkAmount      = checkFloatVal("amount_" + id_account);
+		var checkIntitule    = checkInput("intitule_" + id_account);
+		var checkDate        = checkInput("date_movement_" + id_account);
+
+		if (checkAmount && checkIntitule && checkDate)
+		{
+			$.ajax({
+				type: "POST",
+				url: "ajax/newCheck.php",
+				data: {
+					amount: $("#amount_" + id_account).val(),
+					intitule: $("#intitule_" + id_account).val(),
+					category: $("#select_type_check_" + id_account).val(),
+					date: $("#date_release_check_" + id_account).val(),
+					id_user: $("#select_user_check_" + id_account).val(),
+					id_account: id_account,
+				},
+				success: function(msg){
+					console.log(msg);
+					if (msg == 'error_check')
+					{
+						alert('Une erreur est survenu durant l\'enregistrement');
+					}
+					else
+					{
+						clear_form_elements("#form_add_check_" + id_account);
+						window.location.reload();
+					}
+						
+				}
+			});
+		}
+	});
+}
+
+function addCheckMovement(id_account, id_check)
+{
+	$.ajax({
+		type: "POST",
+		url: "ajax/newMovement.php",
+		data: {
+			id_user: $("#user_" + id_check).data("iduser"),
+			amount: $("#amount_" + id_check).html(),
+			intitule: $("#name_" + id_check).html(),
+			category: $("#category_" + id_check).data("idcategory"),
+			id_account: id_account,
+			debit: 0,
+			date: $("#date_now").val(),
+			monthly: 0,
+			annual: 0,
+			date_end: "",
+			nb_month: "",
+		},
+		success: function(msg){
+			console.log(msg);
+			if (msg == 'error_movement')
+			{
+				alert('Une erreur est survenu durant l\'enregistrement');
+			}
+			else
+			{
+				$.ajax({
+					type: "POST",
+					url: "ajax/updateCheckDateDebit.php",
+					data: {
+						id_check: id_check,
+						date: $("#date_now").val(),
+						id_movement: msg,
+					},
+					success: function(m){
+						if (m == 'error_add_check')
+						{
+							alert('Une erreur est survenu durant l\'enregistrement');
+						}
+						else
+						{
+							$("#check_" + id_check).html($("#date_now").val() +' <span class="glyphicon glyphicon-ok text-success"></span>');
+						}
+					}
+				});
+			}
+		}
+	});
+}
+
+function deleteCheck(id_account, id_check, id_movement)
+{
+	$.ajax({
+		type: "POST",
+		url: "ajax/deleteCheck.php",
+		data: {
+			id_check: id_check,
+			id_movement: id_movement,
+			id_account: id_account,
+			amount: $("#amount_" + id_check).html(),
+		},
+		success: function(m){
+			if (m == 'error_remove_check')
+			{
+				alert('Une erreur est survenu durant la suppression');
+			}
+			else
+			{
+				$("#tr_" + id_check).hide();
+			}
+		}
+	});
+}
+
 function createNewEmprunt()
 {
 	$(document).on("click", "#submit_new_emprunt", function(e){

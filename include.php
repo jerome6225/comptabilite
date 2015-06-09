@@ -7,6 +7,7 @@
 	include dirname(__FILE__)."/classes/Admin.php";
 	include dirname(__FILE__)."/classes/AccountBalance.php";
 	include dirname(__FILE__)."/classes/CategoryMovement.php";
+	include dirname(__FILE__)."/classes/Check.php";
 	include dirname(__FILE__)."/classes/Emprunt.php";
 	include dirname(__FILE__)."/classes/IdUserAccountIdAccount.php";
 	include dirname(__FILE__)."/classes/Movement.php";
