@@ -444,6 +444,13 @@ function showUserAccountForm(userInput, divUserAccountForm, current)
 
 function movement(id_account)
 {
+	$(document).on('click', '#select_type_movement_' + id_account, function(e){
+		if ($("#select_type_movement_" + id_account).val() == '17')
+			$("#div_account_movement_" + id_account).show();
+		else
+			$("#div_account_movement_" + id_account).hide();
+	});
+
 	$(document).on('click', '#select_monthly_' + id_account, function(e){
 		if ($("#select_monthly_" + id_account).val() == '1')
 			$("#div_monthly_" + id_account).show();
@@ -478,6 +485,7 @@ function movement(id_account)
 					amount: $("#amount_" + id_account).val(),
 					intitule: $("#intitule_" + id_account).val(),
 					category: $("#select_type_movement_" + id_account).val(),
+					account_assoc: $("#select_account_movement_" + id_account).val(),
 					debit: $("#select_debit_" + id_account).val(),
 					date: $("#date_movement_" + id_account).val(),
 					monthly: $("#select_monthly_" + id_account).val(),

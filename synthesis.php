@@ -135,6 +135,13 @@
 										<?php foreach ($categoryMovement as $c) echo '<option value="'.$c['id_category_movement'].'">'.$c['name_category_movement'].'</option>' ?>
 									</select>
 								</div>
+								<div class="form-group has-feedback" id="div_account_movement_<?php echo $id_account ?>" style="display: none;">
+									<label for="select_account_movement_<?php echo $id_account ?>">Compte associ&eacute; : </label>
+									<select class="form-control" id="select_account_movement_<?php echo $id_account ?>" name="select_account_movement_<?php echo $id_account ?>">
+										<option value="0">Compte externe</option>
+										<?php foreach ($accounts as $a) echo '<option value="'.$a['id_account'].'">'.$a['name'].'</option>' ?>
+									</select>
+								</div>
 								<div class="form-group has-feedback" id="div_select_debit_<?php echo $id_account ?>">
 									<label for="select_debit_<?php echo $id_account ?>">Type : </label>
 									<select class="form-control" id="select_debit_<?php echo $id_account ?>" name="select_debit_<?php echo $id_account ?>">
