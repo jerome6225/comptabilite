@@ -20,6 +20,14 @@ function showModifyMovement(id_movement)
 {
 	$(".span_modify_movement_" + id_movement).addClass('sr-only');
 	$(".input_hidden_" + id_movement).removeClass("sr-only");
+
+	if ($("#id_movement_assoc_" + id_movement).val() != 0)
+	{
+		$("#name_" + id_movement).removeClass('sr-only');
+		$("#modify_name_" + id_movement).addClass("sr-only");
+		$("#category_" + id_movement).removeClass('sr-only');
+		$("#modify_category_" + id_movement).addClass("sr-only");
+	}
 	return false;
 }
 

@@ -102,6 +102,7 @@
 				$movement['debit']                  = $res['debit'];
 				$movement['name_category_movement'] = $res['name_category_movement'];
 				$movement['color_movement']         = $res['color_movement'];
+				$movement['id_movement_assoc']      = $res['id_movement_assoc'];
 
 				$movements[$res['name_account']][] = $movement;
 				$idsAccount[$res['id_account']]    = $res['id_account'];
@@ -154,6 +155,11 @@
 			return  $movements;
 		}
 
+		public static function getMovement($idMovement)
+		{
+			return Db::select('movement', '*', array('id_movement' => array(PDO::PARAM_INT => $idMovement)));
+		}
+		
 		public static function deleteMovement($idMovement)
 		{
 			$where = array(
@@ -181,7 +187,20 @@
 			return Db::update('movement', $fields, $where);
 		}
 
-		public static function addMovement($idUser, $idAccount, $idUserAccount, $amount, $debit, $dateMovement, $monthly, $annual, $nameAccount, $movementCategory, $dateEnd, $nbMonth)
+		public static function updateMovementAssoc($idMovement, $idMovementAssoc)
+		{
+			$fields = array(
+				'id_movement_assoc' => array(PDO::PARAM_INT => $idMovementAssoc),
+			);
+
+			$where = array(
+				'id_movement' => array(PDO::PARAM_INT => $idMovement),
+			);
+
+			return Db::update('movement', $fields, $where);
+		}
+
+		public static function addMovement($idUser, $idAccount, $idUserAccount, $amount, $debit, $dateMovement, $monthly, $annual, $nameAccount, $movementCategory, $dateEnd, $nbMonth, $idMovementAssoc=0)
 		{
 
 			$fields = array(
@@ -197,6 +216,7 @@
 				'movement_category' => array(PDO::PARAM_STR => $movementCategory),
 				'date_end'          => array(PDO::PARAM_STR => $dateEnd),
 				'nb_month'          => array(PDO::PARAM_STR => $nbMonth),
+				'id_movement_assoc' => array(PDO::PARAM_INT => $idMovementAssoc),
 			);
 
 			return Db::insert('movement', $fields);

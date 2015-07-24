@@ -3,6 +3,15 @@
 <head>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- favicon -->
+	<link rel="shortcut icon" href="img/favicons/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="img/favicons/favicon.png" type="image/png">
+	<link rel="icon" sizes="32x32" href="img/favicons/favicon-32.png" type="image/png">
+	<link rel="icon" sizes="64x64" href="img/favicons/favicon-64.png" type="image/png">
+	<link rel="icon" sizes="96x96" href="img/favicons/favicon-96.png" type="image/png">
+	<!-- /favicon -->
+
 	<script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
 	<script type="text/javascript" src="js/ajax.js"></script>
 	<script type="text/javascript" src="js/function.js"></script>

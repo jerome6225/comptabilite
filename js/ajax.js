@@ -273,6 +273,7 @@ function deleteMovement(id_movement){
 			idAccount: $("#id_account_" + id_movement).val(),
 			amount: $("#amount_" + id_movement).html(),
 			debit: $("#debit_" + id_movement).val(),
+			id_movement_assoc: $("#id_movement_assoc_" + id_movement).val(),
 		},
 		success: function(msg){
 			if (msg == "error")
@@ -282,6 +283,33 @@ function deleteMovement(id_movement){
 			else
 			{
 				$("#tr_" + id_movement).addClass('sr-only');
+				$("#tr_" + $("#id_movement_assoc_" + id_movement).val()).addClass('sr-only');
+
+				var newTotalAccount = 0;
+				var newTotalAccountAssoc = 0;
+
+				if ($("#debit_" + id_movement).val() == 1)
+				{
+					newTotalAccount = parseFloat($(".total_movement_" + $("#id_account_" + id_movement).val()).html()) + parseFloat($("#amount_" + id_movement).html());
+					$(".total_movement_" + $("#id_account_" + id_movement).val()).html(newTotalAccount);
+
+					if ($("#id_movement_assoc_" + id_movement).val() != 0)
+					{
+						newTotalAccountAssoc = parseFloat($(".total_movement_" + msg).html()) - parseFloat($("#amount_" + id_movement).html());
+						$(".total_movement_" + msg).html(newTotalAccountAssoc);
+					}
+				}
+				else
+				{
+					newTotalAccount = parseFloat($(".total_movement_" + $("#id_account_" + id_movement).val()).html()) - parseFloat($("#amount_" + id_movement).html());
+					$(".total_movement_" + $("#id_account_" + id_movement).val()).html(newTotalAccount);
+
+					if ($("#id_movement_assoc_" + id_movement).val() != 0)
+					{
+						newTotalAccountAssoc = parseFloat($(".total_movement_" +  msg).html()) + parseFloat($("#amount_" + id_movement).html());
+						$(".total_movement_" + msg).html(newTotalAccountAssoc);
+					}
+				}
 				return false;
 			}
 		}
@@ -291,6 +319,15 @@ function deleteMovement(id_movement){
 function validModify(id_movement, monthly){
 	var date_end = (monthly == 1) ? $("#modify_date_end_" + id_movement).val() : '0000-00-00';
 
+	if ($("#id_movement_assoc_" + id_movement).val() != 0)
+	{
+		var name = $("#name_" + id_movement).html();
+	}
+	else
+	{
+		name = $("#modify_name_" + id_movement).val();
+	}
+
 	$.ajax({
 		type: "POST",
 		url: "ajax/modifyMovement.php",
@@ -299,12 +336,13 @@ function validModify(id_movement, monthly){
 			date_begin: $("#modify_date_begin_" + id_movement).val(),
 			date_end: date_end,
 			user: $("#modify_user_" + id_movement).val(),
-			name: $("#modify_name_" + id_movement).val(),
+			name: name,
 			category: $("#modify_category_" + id_movement).val(),
 			amount: $("#modify_amount_" + id_movement).val(),
 			oldAmount: $("#amount_" + id_movement).html(),
 			idAccount: $("#id_account_" + id_movement).val(),
 			debit: $("#debit_" + id_movement).val(),
+			id_movement_assoc: $("#id_movement_assoc_" + id_movement).val(),
 		},
 		success: function(msg){
 			if (msg == "error")
@@ -313,12 +351,57 @@ function validModify(id_movement, monthly){
 			}
 			else
 			{
+				var result = JSON.parse(msg);
+
+				var oldAmount     = parseFloat($("#amount_" + id_movement).html());
+				var newAmount     = parseFloat($("#modify_amount_" + id_movement).val());
+				var totalMovement = parseFloat($(".total_movement_" + $("#id_account_" + id_movement).val()).html());
+				var userName      = (result['userName'] == null) ? 'Tout le monde' : result['userName'];
 				$("#date_" + id_movement).html($("#modify_date_begin_" + id_movement).val());
+				$("#user_color_" + id_movement).attr("style", "background-color: " + result['userColor'] + ";");
+				$("#user_" + id_movement).html(userName);
 				$("#name_" + id_movement).html($("#modify_name_" + id_movement).val());
-				$("#category_" + id_movement).html(msg);
+				$("#category_" + id_movement).html(result['categoryMovement']);
 				$("#amount_" + id_movement).html($("#modify_amount_" + id_movement).val());
 				$(".span_modify_movement_" + id_movement).removeClass('sr-only');
 				$(".input_hidden_" + id_movement).addClass("sr-only");
+
+				if ($("#id_movement_assoc_" + id_movement).val() != 0)
+				{
+					$("#date_" + $("#id_movement_assoc_" + id_movement).val()).html($("#modify_date_begin_" + id_movement).val());
+					$("#user_color_" + $("#id_movement_assoc_" + id_movement).val()).attr("style", "background-color: " + result['userColor'] + ";");
+					$("#user_" + $("#id_movement_assoc_" + id_movement).val()).html(userName);
+					$("#name_" + $("#id_movement_assoc_" + id_movement).val()).html($("#modify_name_" + id_movement).val());
+					$("#category_" + $("#id_movement_assoc_" + id_movement).val()).html(result['categoryMovement']);
+					$("#amount_" + $("#id_movement_assoc_" + id_movement).val()).html($("#modify_amount_" + id_movement).val());
+				}
+
+				if (oldAmount != newAmount)
+				{
+					if ($("#debit_" + id_movement).val() == 1)
+					{
+						newTotalAccount = totalMovement + oldAmount - newAmount;
+
+						if (parseInt($("#id_movement_assoc_" + id_movement).val()) != 0)
+						{
+							newTotalAccountAssoc = parseFloat($(".total_movement_" + result['idAccountAssoc']).html()) - oldAmount + newAmount;
+							$(".total_movement_" + result['idAccountAssoc']).html(newTotalAccountAssoc);
+						}
+					}
+					else
+					{
+						newTotalAccount = totalMovement - oldAmount + newAmount;
+						
+						if (parseInt($("#id_movement_assoc_" + id_movement).val()) != 0)
+						{
+							newTotalAccountAssoc = parseFloat($(".total_movement_" + result['idAccountAssoc']).html()) + oldAmount - newAmount;
+							$(".total_movement_" + result['idAccountAssoc']).html(newTotalAccountAssoc);
+						}
+					}
+
+					$(".total_movement_" + $("#id_account_" + id_movement).val()).html(newTotalAccount);
+				}
+				
 				return false;
 			}
 		}
@@ -446,9 +529,15 @@ function movement(id_account)
 {
 	$(document).on('click', '#select_type_movement_' + id_account, function(e){
 		if ($("#select_type_movement_" + id_account).val() == '17')
+		{
 			$("#div_account_movement_" + id_account).show();
+			$("#div_intitule_" + id_account).hide();
+		}
 		else
+		{
 			$("#div_account_movement_" + id_account).hide();
+			$("#div_intitule_" + id_account).show();
+		}
 	});
 
 	$(document).on('click', '#select_monthly_' + id_account, function(e){
@@ -469,9 +558,12 @@ function movement(id_account)
 		e.preventDefault();
 
 		var checkAmount      = checkFloatVal("amount_" + id_account);
-		var checkIntitule    = checkInput("intitule_" + id_account);
+		var checkIntitule    = true;
 		var checkDate        = checkInput("date_movement_" + id_account);
 		var checkInputAnnual = true;
+
+		if ($("#select_type_movement_" + id_account).val() != '17')
+			checkIntitule = checkInput("intitule_" + id_account);
 
 		if ($("#select_monthly_" + id_account).val() == 1 && $("#select_annual_" + id_account).val() == 0)
 			checkInputAnnual = checkIntVal("input_annual_" + id_account);
