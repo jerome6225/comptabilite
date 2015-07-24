@@ -128,10 +128,5 @@
 			<?php $j++ ?>
 		<?php } ?>
 	</div>
-<script type="text/javascript">
-$(function(){
-
-});
-</script>
 </div>
 <?php include "footer.php" ?>

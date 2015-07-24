@@ -1,232 +1,176 @@
 <?php include dirname(__FILE__)."/include.php" ?>
 <?php include dirname(__FILE__)."/redirectAuth.php" ?>
+<?php include dirname(__FILE__)."/js/includeMorris.php" ?>
 <?php include dirname(__FILE__)."/controllers/synthesisController.php" ?>
 <?php include dirname(__FILE__)."/header.php" ?>
+<!--<link rel="stylesheet" type="text/css" href="css/style.chartinator.css">-->
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript" src="js/attc.googleCharts.js" ></script>
 
 <div class="row col-sm-offset-1 col-sm-10">
-	<legend>Relev&eacute; des comptes</legend>
-	<legend>S&eacute;lectionnez un mois pour voir relev&eacute; <span id="btn_form_synthesis_date" class="glyphicon glyphicon-plus text-primary cursor_pointer"></span></legend>
-	<form class="form-inline sr-only" name="form_synthesis_date" id="form_synthesis_date" method="POST" action="synthesis.php">
-		<div class="form-group has-feedback" id="div_month">
-	    	<label for="month">Mois : </label>
-	    	<select class="" id="month" name="month">
-	    		<?php foreach ($months as $key => $month){ ?><option value="<?php echo $key ?>"><?php echo $month ?></option><?php } ?>
-	    	</select>
-		</div>
-		<div class="form-group has-feedback" id="div_year">
-	    	<label for="year">Ann&eacute; : </label>
-	    	<select class="" id="year" name="year">
-	    		<?php foreach ($years as $year){ ?><option value="<?php echo $year ?>"><?php echo $year ?></option><?php } ?>
-	    	</select>
-		</div>
-		<button type="submit" class="btn btn-primary btn-sm" name="submit_date_releve_info" id="submit_date_releve_info"><span class="glyphicon glyphicon-calendar"></span> Voir</button>
-	</form>
-	<br /><br />
-	<legend>Relev&eacute; de compte</legend>
+	<legend>Synth&egrave;se des comptes</legend>
 	<ul class="nav nav-tabs nav-justified">
 		<?php $class = '' ?>
 		<?php $i = 0 ?>
-		<?php foreach ($movements as $key => $movement) { ?>
-			<?php $explKey = explode('*', $key) ?>
+		<?php foreach ($bilanUsers as $key => $bilan){ ?>
+			<?php $k = explode("*", $key); ?>
 			<?php $class = ($class == '') ? 'active' : 'disable'; ?>
-			<li class="<?php echo $class ?>"><a href="#<?php echo $i ?>" data-toggle="tab"><?php echo $explKey[0] ?></a></li>
+			<li class="<?php echo $class ?>"><a href="#<?php echo $i ?>" data-toggle="tab"><?php echo $k[0] ?></a></li>
 			<?php $i++ ?>
 		<?php } ?>
 	</ul>
-	<div class="tab-content">
+
+	<div class="tab-content"><br /><br />
 		<?php $classContent = '' ?>
-		<?php $j = 0 ?>
-		<?php foreach ($movements as $key => $movement) { ?>
-			<?php $explKey = explode('*', $key) ?>
-			<?php $id_account = $explKey[1] ?>
+		<?php $v = 0 ?>
+		<?php foreach ($bilanUsers as $key => $bilan){ ?>
 			<?php $classContent = ($classContent == '') ? 'active' : 'blabla'; ?>
-			<div class="table-responsive tab-pane <?php echo $classContent ?>" id="<?php echo $j ?>">
-				<br /><br />
-				<?php if (count($movement) == 0){ ?>
-					<div>Aucune informations pour ce compte</div>
-				<?php }else{ ?>
-					<table class="table table-hover">
-						<tr>
-							<th>Date</th>
-							<th>Utilisateur</th>
-							<th>Intitul&eacute;</th>
-							<th>Cat&eacute;gorie</th>
-							<th>Montant</th>
-							<th colspan="2">&nbsp;</th>
-						</tr>
-						<?php $total = 0 ?>
-						<?php foreach ($movement as $mov) { ?>
-							<?php foreach ($mov as $m) { ?>
-								<tr class="text-left" id="tr_<?php echo $m['id_movement'] ?>">
-									<td>
-										<span class="span_modify_movement_<?php echo $m['id_movement'] ?>" id="date_<?php echo $m['id_movement'] ?>"><?php echo $m['date_movement'] ?></span>
-											<input type="text" class="sr-only input_hidden_<?php echo $m['id_movement'] ?> input_monthly" id="modify_date_begin_<?php echo $m['id_movement'] ?>" value="<?php echo $m['date_begin'] ?>" />
-										<?php if($m['monthly']){ ?>
-											<input type="text" class="sr-only input_hidden_<?php echo $m['id_movement'] ?> input_monthly" id="modify_date_end_<?php echo $m['id_movement'] ?>" value="<?php echo $m['date_end'] ?>" />
-										<?php } ?>
-									</td>
-									<td class="text-left" <?php if (isset($m['color'])){ ?>style="background-color: <?php echo $m['color'] ?>"<?php } ?>>
-										<span class="span_modify_movement_<?php echo $m['id_movement'] ?>" id="user_<?php echo $m['id_movement'] ?>"><?php echo (isset($m['name_user_account'])) ? $m['name_user_account'] : 'Tout le monde'; ?></span>
-										<select class="sr-only input_hidden_<?php echo $m['id_movement'] ?>"><option value="0">Tout le monde</option><?php foreach ($users as $user){ ?><option value="<?php echo $user['id_user_account']?>"><?php echo $user['name_user_account']?></option><?php } ?></select>
-									</td>
-									<td class="text-left">
-										<span class="span_modify_movement_<?php echo $m['id_movement'] ?>" id="name_<?php echo $m['id_movement'] ?>"><?php echo $m['name_movement'] ?></span>
-										<input type="text" class="sr-only input_hidden_<?php echo $m['id_movement'] ?>" id="modify_name_<?php echo $m['id_movement'] ?>" value="<?php echo $m['name_movement'] ?>" />
-									</td>
-									<td class="text-right">
-										<span class="span_modify_movement_<?php echo $m['id_movement'] ?>" id="category_<?php echo $m['id_movement'] ?>"><?php echo $m['movement_category'] ?></span>
-										<select class="sr-only input_hidden_<?php echo $m['id_movement'] ?>" id="modify_category_<?php echo $m['id_movement'] ?>">
-											<?php foreach ($categoryMovement as $c) echo '<option value="'.$c['id_category_movement'].'">'.$c['name_category_movement'].'</option>' ?>
-										</select>
-									</td>
-									<td class="text-right <?php echo $m['color_debit'] ?>">
-										<span class="span_modify_movement_<?php echo $m['id_movement'] ?>" id="amount_<?php echo $m['id_movement'] ?>"><?php echo $m['amount'] ?></span>
-										<input type="text" class="sr-only input_hidden_<?php echo $m['id_movement'] ?>" id="modify_amount_<?php echo $m['id_movement'] ?>" value="<?php echo $m['amount'] ?>" />
-									</td>
-									<td class="cursor_pointer" id="modifier_<?php echo $m['id_movement'] ?>">
-										<span class="span_modify_movement_<?php echo $m['id_movement'] ?> glyphicon glyphicon-edit text-primary cursor_pointer" onclick="showModifyMovement('<?php echo $m['id_movement'] ?>');"></span>
-										<button type="button" class="btn btn-primary btn-sm sr-only input_hidden_<?php echo $m['id_movement'] ?>" onclick="validModify('<?php echo $m['id_movement'] ?>', '<?php echo $m['monthly'] ?>');" id="modify_valid_<?php echo $m['id_movement'] ?>"><span class="glyphicon glyphicon-pencil"></span> Valider</button>
-									</td>
-									<td class="cursor_pointer" id="supprimer_<?php echo $m['id_movement'] ?>">
-										<span class="span_modify_movement_<?php echo $m['id_movement'] ?> glyphicon glyphicon-trash text-danger cursor_pointer" onclick="deleteMovement('<?php echo $m['id_movement'] ?>');"></span>
-										<button type="button" class="btn btn-primary btn-sm sr-only input_hidden_<?php echo $m['id_movement'] ?>" onclick="cancelModify('<?php echo $m['id_movement'] ?>');" id="modify_cancel_<?php echo $m['id_movement'] ?>"><span class="glyphicon glyphicon-remove"></span> Annuler</button>
-									</td>
+			<div class="tab-pane <?php echo $classContent ?>" id="<?php echo $v ?>">
+				<?php foreach ($bilan as $j => $b) { ?>
+					<div class="row">
+						<div class="table-responsive col-sm-6">
+							<table class="table table-hover">
+								<tr>
+									<th colspan="2" <?php if (!is_null($b['color'])){echo 'style="color: '.$b['color'].';"';} ?>>
+										<?php if (is_null($b['name_user_account'])){ echo 'tous les utilisateurs';} else {echo 'utilisateur '.$b['name_user_account'];} ?>
+									</th>
 								</tr>
-								<input type="hidden" id="id_account_<?php echo $m['id_movement'] ?>" value="<?php echo $m['id_account'] ?>" />
-								<input type="hidden" id="debit_<?php echo $m['id_movement'] ?>" value="<?php echo $m['debit'] ?>" />
-								<script type="text/javascript">
-									$(function() {
-										 $(function() {
-											$("#modify_date_begin_<?php echo $m['id_movement'] ?>").datepicker({ dateFormat: 'yy-mm-dd' });
-										});
-										 $(function() {
-											$("#modify_date_end_<?php echo $m['id_movement'] ?>").datepicker({ dateFormat: 'yy-mm-dd' });
-										});
-									});
-								</script>
-								<?php $total = ($m['debit'] == "1") ? (float)$total - (float)$m['calc_amount'] : (float)$total + (float)$m['calc_amount'] ?>
-							<?php } ?>
+								<tr>
+									<td>Total d&eacute;bit </td>
+									<td class="<?php if ((float)$b['total_debit'] < 0){ ?>text-danger<?php }else{ ?>text-success<?php } ?>"><?php echo $b['total_debit'] ?></td>
+								</tr>
+								<tr>
+									<td>Total cr&eacute;dit </td>
+									<td class="<?php if ((float)$b['total_credit'] < 0){ ?>text-danger<?php }else{ ?>text-success<?php } ?>"><?php echo $b['total_credit'] ?></td>
+								</tr>
+								<tr>
+									<td>Total des mouvements </td>
+									<td class="<?php if ((float)$b['total_amount'] < 0){ ?>text-danger<?php }else{ ?>text-success<?php } ?>"><?php echo $b['total_amount'] ?></td>
+								</tr>
+							</table>
+						</div>
+						<?php if ((float)$b['total_debit'] < 0){ ?>
+							<div class="col-sm-6">
+								<div id="cat_<?php echo $j ?>_<?php echo $k[1] ?>_<?php echo $v ?>" ></div>
+							</div>
 						<?php } ?>
-					
-						<tr>
-							<td class="text-right" colspan="4">TOTAL DES MOUVEMENTS</td>
-							<td class="text-right <?php if ((float)$total > 0){ ?>text-success<?php }else{ ?>text-danger<?php } ?>"><?php echo round($total, 2, PHP_ROUND_HALF_UP) ?></td>
-						</tr>
-					</table>
+					</div><br /><br />
 				<?php } ?>
-				<div class="col-xs-12">
-					<legend>Saisir une nouvelle entr&eacute;e <span id="btn_form_choice_account_<?php echo $id_account ?>" class="glyphicon glyphicon-plus text-primary cursor_pointer"></span></legend>
-					<form id="form_choice_account_<?php echo $id_account ?>" class="sr-only">
-						<div id="columns" class="row">
-						    <section class="col-sm-5">
-						    	<div class="form-group has-feedback" id="div_amount_<?php echo $id_account ?>">
-							    	<label for="amount_<?php echo $id_account ?>">Montant : </label>
-									<input type="text" placeholder="Montant" class="form-control" name="amount_<?php echo $id_account ?>" id="amount_<?php echo $id_account ?>" />
-									<span class="glyphicon form-control-feedback" aria-hidden="true" id="span_amount_<?php echo $id_account ?>"></span>
-								</div>
-								<div class="form-group has-feedback" id="div_intitule_<?php echo $id_account ?>">
-									<label for="intitule_<?php echo $id_account ?>">Intitul&eacute; : </label>
-									<input type="text" placeholder="Intitul&eacute;" class="form-control" name="intitule_<?php echo $id_account ?>" id="intitule_<?php echo $id_account ?>" />
-									<span class="glyphicon form-control-feedback" aria-hidden="true" id="span_intitule_<?php echo $id_account ?>"></span>
-								</div>
-								<div class="form-group has-feedback" id="div_type_movement_<?php echo $id_account ?>">
-									<label for="select_type_movement_<?php echo $id_account ?>">Cat&eacute;gorie : </label>
-									<select class="form-control" id="select_type_movement_<?php echo $id_account ?>" name="select_type_movement_<?php echo $id_account ?>">
-										<?php foreach ($categoryMovement as $c) echo '<option value="'.$c['id_category_movement'].'">'.$c['name_category_movement'].'</option>' ?>
-									</select>
-								</div>
-								<div class="form-group has-feedback" id="div_account_movement_<?php echo $id_account ?>" style="display: none;">
-									<label for="select_account_movement_<?php echo $id_account ?>">Compte associ&eacute; : </label>
-									<select class="form-control" id="select_account_movement_<?php echo $id_account ?>" name="select_account_movement_<?php echo $id_account ?>">
-										<option value="0">Compte externe</option>
-										<?php foreach ($accounts as $a) echo '<option value="'.$a['id_account'].'">'.$a['name'].'</option>' ?>
-									</select>
-								</div>
-								<div class="form-group has-feedback" id="div_select_debit_<?php echo $id_account ?>">
-									<label for="select_debit_<?php echo $id_account ?>">Type : </label>
-									<select class="form-control" id="select_debit_<?php echo $id_account ?>" name="select_debit_<?php echo $id_account ?>">
-										<option value="0">Revenus</option>
-										<option value="1">D&eacute;pense</option>
-									</select>
-								</div>
-								<div class="form-group has-feedback" id="div_date_movement_<?php echo $id_account ?>">
-									<label for="date_movement_<?php echo $id_account ?>">Date : </label>
-									<input type="text" placeholder="Date" class="form-control" name="date_movement_<?php echo $id_account ?>" id="date_movement_<?php echo $id_account ?>" />
-									<span class="glyphicon form-control-feedback" aria-hidden="true" id="span_date_movement_<?php echo $id_account ?>"></span>
-								</div>
-							</section>
-							<section class="col-sm-5">
-								<div class="form-group has-feedback" id="div_select_user_movement_<?php echo $id_account ?>">
-									<label for="select_user_movement_<?php echo $id_account ?>">Assigner &agrave; : </label>
-									<select class="form-control" id="select_user_movement_<?php echo $id_account ?>" name="select_user_movement_<?php echo $id_account ?>">
-										<option value="0">Tous le monde</option>
-										<?php foreach ($users as $u) echo '<option value="'.$u['id_user_account'].'">'.$u['name_user_account'].'</option>' ?>
-									</select>
-								</div>
-								<div class="form-group has-feedback" id="div_select_monthly_<?php echo $id_account ?>">
-									<label for="select_monthly_<?php echo $id_account ?>">P&eacute;riodicit&eacute; : </label>
-									<select class="form-control" id="select_monthly_<?php echo $id_account ?>" name="select_monthly_<?php echo $id_account ?>">
-										<option value="0">Une seule fois</option>
-										<option value="1">Tous les mois</option>
-									</select>
-								</div>
-								<div id="div_monthly_<?php echo $id_account ?>" style="display: none;">
-									<div class="form-group has-feedback" id="div_date_end_movement_<?php echo $id_account ?>">
-										<label for="date_end_movement_<?php echo $id_account ?>">Date de fin : </label>
-										<input type="text" placeholder="Date de fin" class="form-control" name="date_end_movement_<?php echo $id_account ?>" id="date_end_movement_<?php echo $id_account ?>" />
-										<span class="glyphicon form-control-feedback" aria-hidden="true" id="span_date_end_movement_<?php echo $id_account ?>"></span>
-									</div>
-									<div class="form-group has-feedback" id="div_select_annual_<?php echo $id_account ?>">
-										<label for="select_annual_<?php echo $id_account ?>">Mouvement annuel : </label><br />
-										<select class="input_login" id="select_annual_<?php echo $id_account ?>" name="select_annual_<?php echo $id_account ?>">
-											<option value="1">Annuel</option>
-											<option value="0">Sur quelques mois</option>
-										</select>
-									</div>
-								</div>
-								<div id="div_annual_<?php echo $id_account ?>" style="display: none;">
-									<div class="form-group has-feedback" id="div_input_annual_<?php echo $id_account ?>">
-										<label for="input_annual_<?php echo $id_account ?>">Combien de mois : </label>
-										<input type="text" placeholder="Date de fin" class="form-control" name="input_annual_<?php echo $id_account ?>" id="input_annual_<?php echo $id_account ?>" />
-										<span class="glyphicon form-control-feedback" aria-hidden="true" id="span_input_annual_<?php echo $id_account ?>"></span>
-									</div>
-								</div>
-							</section>
+				<div class="row col-sm-12">
+					<div class="table-responsive row col-sm-7">
+						<table class="table table-hover">
+							<!--<tr>
+								<td>Solde au <?php //echo date("d-m-Y") ?></td>
+								<td class="<?php //echo ((float)$accountsBalance[$k[1]]['current_balance'] < 0) ? 'text-danger' : 'text-success' ?>"><?php //echo $accountsBalance[$k[1]]['current_balance']; ?></td>
+							</tr>-->
+							<tr>
+								<td>Solde &agrave; la fin du mois</td>
+								<td class="<?php echo ((float)$accountsBalance[$k[1]]->balance_total < 0) ? 'text-danger' : 'text-success' ?>"><?php echo $accountsBalance[$k[1]]->balance_total; ?></td>
+							</tr>
+						</table>
+					</div>
+					<div class="row">
+						<div class="col-sm-6">
+							<div id="credit_<?php echo $k[1] ?>_<?php echo $v ?>"></div>
 						</div>
-						<div class="row">
-							<button type="button" class="btn btn-primary btn-sm" name="submit_select_choice_account_<?php echo $id_account ?>" id="submit_select_choice_account_<?php echo $id_account ?>"><span class="glyphicon glyphicon-plus"></span> Enregistrer</button>
+						<div class="col-sm-6">
+							<div id="debit_<?php echo $k[1] ?>_<?php echo $v ?>"></div>
 						</div>
-					</form>
+					</div>
 				</div>
 			</div>
+			<script>
+				$(function(){
+					<?php foreach ($bilan as $j => $b){ ?>
+						google.setOnLoadCallback(drawChart<?php echo $j ?>_<?php echo $k[1] ?>_<?php echo $v ?>);
+						function drawChart<?php echo $j ?>_<?php echo $k[1] ?>_<?php echo $v ?>() {
+							var data = google.visualization.arrayToDataTable([
+								['Task', 'CATEGORIES'],
+								<?php foreach ($categoriesPercent[$key][$j] as $i => $c){ ?>
+									["<?php echo utf8_decode(html_entity_decode($i)) ?>", <?php echo $c['percent'] ?>],
+								<?php } ?>
+							]);
 
-			<script type="text/javascript">
-				$(function() {
-					$(function() {
-						$("#date_movement_<?php echo $id_account ?>").datepicker({ dateFormat: 'yy-mm-dd' });
-					});
-					$(function() {
-						$("#date_end_movement_<?php echo $id_account ?>").datepicker({ dateFormat: 'yy-mm-dd' });
-					});
+							var options = {
+								title: 'DEPENSES PAR CATEGORIES',
+								width: 450,
+								height: 280,
+								colors:[
+								<?php foreach ($categoriesPercent[$key][$j] as $i => $c){ ?>
+									"<?php echo $c['color'] ?>",
+								<?php } ?>
+								],
+								is3D: true,
+								legend: 'none',
+								chartArea:{left:0,width:'85%',height:'85%'},
+							};
 
-					movement("<?php echo $id_account ?>");
-					toggleForm("form_choice_account_<?php echo $id_account ?>");
+		        			var chart = new google.visualization.PieChart(document.getElementById('cat_<?php echo $j ?>_<?php echo $k[1] ?>_<?php echo $v ?>'));
+
+		        			chart.draw(data, options);
+  						}
+      				<?php } ?>
+					
+      				google.setOnLoadCallback(drawChart<?php echo $k[1] ?>_<?php echo $v ?>);
+					function drawChart<?php echo $k[1] ?>_<?php echo $v ?>() {
+						var data = google.visualization.arrayToDataTable([
+							['Task', 'RECETTE'],
+							<?php foreach ($bilan as $b){ ?>
+								["<?php echo (is_null($b['name_user_account'])) ? 'Tous' : $b['name_user_account'] ?>", <?php echo $b['graph_credit'] ?>],
+							<?php } ?>
+						]);
+
+						var options = {
+							title: 'RECETTE',
+							width: 450,
+							height: 280,
+							colors:[
+							<?php foreach ($bilan as $b){ ?>
+								"<?php echo (is_null($b['color'])) ? '#848484' : $b['color'] ?>",
+							<?php } ?>
+							],
+							is3D: true,
+							legend: 'none',
+							chartArea:{left:0,width:'85%',height:'85%'},
+						};
+
+	        			var chart = new google.visualization.PieChart(document.getElementById('credit_<?php echo $k[1] ?>_<?php echo $v ?>'));
+
+	        			chart.draw(data, options);
+					}
+
+					google.setOnLoadCallback(drawChart_<?php echo $k[1] ?>_<?php echo $v ?>);
+					function drawChart_<?php echo $k[1] ?>_<?php echo $v ?>() {
+						var data = google.visualization.arrayToDataTable([
+							['Task', 'DEPENSE'],
+							<?php foreach ($bilan as $b){ ?>
+								["<?php echo (is_null($b['name_user_account'])) ? 'Tous' : $b['name_user_account'] ?>", <?php echo $b['graph_debit'] ?>],
+							<?php } ?>
+						]);
+
+						var options = {
+							title: 'DEPENSE',
+							titleTextStyle: {align: 'center'},
+							width: 450,
+							height: 280,
+							colors:[
+							<?php foreach ($bilan as $b){ ?>
+								"<?php echo (is_null($b['color'])) ? '#848484' : $b['color'] ?>",
+							<?php } ?>
+							],
+							is3D: true,
+							legend: 'none',
+							chartArea:{left:0,width:'85%',height:'85%'},
+						};
+
+	        			var chart = new google.visualization.PieChart(document.getElementById('debit_<?php echo $k[1] ?>_<?php echo $v ?>'));
+
+	        			chart.draw(data, options);
+						}
 				});
-			</script>
-			<?php $j++ ?>
+				</script>
+			<?php $v++ ?>
 		<?php } ?>
 	</div>
-	<script type="text/javascript">
-		$(function() {
-			 $(function() {
-				$("#date_begin").datepicker();
-			});
-			 $(function() {
-				$("#date_end").datepicker();
-			});
-
-			toggleForm('form_synthesis_date');
-		});
-	</script>
 </div>
 <?php include "footer.php" ?>
