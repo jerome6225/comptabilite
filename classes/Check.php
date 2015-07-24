@@ -31,6 +31,7 @@
 				$check['date_debit']                = $res['date_debit'];
 				$check['string_date_debit']         = Tools::formatDate($res['date_debit']);
 				$check['date_release_check']        = $res['date_release_check'];
+				$check['check_number']          	= $res['check_number'];
 				$check['name_check']          	    = $res['name_check'];
 				$check['movement_category']         = $res['id_category_movement'];
 				$check['id_check']                  = $res['id_check'];
@@ -74,12 +75,13 @@
 			return Db::update('check', $fields, $where);
 		}
 
-		public static function addCheck($idUser, $idAccount, $idUserAccount, $amount, $nameCheck, $checkCategory, $dateReleaseCheck)
+		public static function addCheck($idUser, $idAccount, $idUserAccount, $number, $amount, $nameCheck, $checkCategory, $dateReleaseCheck)
 		{
 			$fields = array(
 				'id_user'            => array(PDO::PARAM_INT => $idUser),
 				'id_account'         => array(PDO::PARAM_STR => $idAccount),
 				'id_user_account'    => array(PDO::PARAM_INT => $idUserAccount),
+				'check_number'       => array(PDO::PARAM_INT => $number),
 				'amount'             => array(PDO::PARAM_STR => $amount),
 				'name_check'         => array(PDO::PARAM_STR => $nameCheck),
 				'check_category'     => array(PDO::PARAM_STR => $checkCategory),
