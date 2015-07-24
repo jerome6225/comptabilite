@@ -49,6 +49,7 @@
 						<tr>
 							<th>Date d'&eacute;dition</th>
 							<th>Utilisateur</th>
+							<th>Num&eacute;ro</th>
 							<th>Intitul&eacute;</th>
 							<th>Cat&eacute;gorie</th>
 							<th>Montant</th>
@@ -66,10 +67,13 @@
 										<span class="span_modify_check_<?php echo $c['id_check'] ?>" id="user_<?php echo $c['id_check'] ?>" data-iduser="<?php echo (isset($c['id_user_account'])) ? $c['id_user_account'] : '0'; ?>"><?php echo (isset($c['name_user_account'])) ? $c['name_user_account'] : 'Tout le monde'; ?></span>
 									</td>
 									<td class="text-left">
+										<span class="span_modify_check_<?php echo $c['id_check'] ?>" id="number_<?php echo $c['id_check'] ?>"><?php echo $c['check_number'] ?></span>
+									</td>
+									<td class="text-left">
 										<span class="span_modify_check_<?php echo $c['id_check'] ?>" id="name_<?php echo $c['id_check'] ?>"><?php echo $c['name_check'] ?></span>
 									</td>
 									<td class="text-right">
-										<span class="span_modify_check_<?php echo $c['id_check'] ?>" id="category_<?php echo $c['id_check'] ?>" data-idcategory="<?php echo $c['id_category_movement'] ?>"><?php echo $c['name_category_movement'] ?></span>
+										<span class="span_modify_check_<?php echo $c['id_check'] ?>" id="category_<?php echo $c['id_check'] ?>" data-idcategory="<?php echo $c['movement_category'] ?>"><?php echo $c['name_category_movement'] ?></span>
 									</td>
 									<td class="text-right <?php echo $c['color_debit'] ?>">
 										<span class="span_modify_check_<?php echo $c['id_check'] ?>" id="amount_<?php echo $c['id_check'] ?>"><?php echo $c['amount'] ?></span>
@@ -99,19 +103,24 @@
 									<input type="text" placeholder="Montant" class="form-control" name="amount_<?php echo $id_account ?>" id="amount_<?php echo $id_account ?>" />
 									<span class="glyphicon form-control-feedback" aria-hidden="true" id="span_amount_<?php echo $id_account ?>"></span>
 								</div>
+								<div class="form-group has-feedback" id="div_number_check_<?php echo $id_account ?>">
+									<label for="number_check_<?php echo $id_account ?>">Num&eacute;ro : </label>
+									<input type="text" placeholder="Intitul&eacute;" class="form-control" name="number_check_<?php echo $id_account ?>" id="number_check_<?php echo $id_account ?>" />
+									<span class="glyphicon form-control-feedback" aria-hidden="true" id="span_number_check_<?php echo $id_account ?>"></span>
+								</div>
 								<div class="form-group has-feedback" id="div_intitule_<?php echo $id_account ?>">
 									<label for="intitule_<?php echo $id_account ?>">Intitul&eacute; : </label>
 									<input type="text" placeholder="Intitul&eacute;" class="form-control" name="intitule_<?php echo $id_account ?>" id="intitule_<?php echo $id_account ?>" />
 									<span class="glyphicon form-control-feedback" aria-hidden="true" id="span_intitule_<?php echo $id_account ?>"></span>
 								</div>
+							</section>
+							<section class="col-sm-5">
 								<div class="form-group has-feedback" id="div_type_check_<?php echo $id_account ?>">
 									<label for="select_type_check_<?php echo $id_account ?>">Cat&eacute;gorie : </label>
 									<select class="form-control" id="select_type_check_<?php echo $id_account ?>" name="select_type_check_<?php echo $id_account ?>">
 										<?php foreach ($categoryMovement as $c) echo '<option value="'.$c['id_category_movement'].'">'.$c['name_category_movement'].'</option>' ?>
 									</select>
 								</div>
-							</section>
-							<section class="col-sm-5">
 								<div class="form-group has-feedback" id="div_date_release_check_<?php echo $id_account ?>">
 									<label for="date_release_check_<?php echo $id_account ?>">Date : </label>
 									<input type="text" placeholder="Date" class="form-control" name="date_release_check_<?php echo $id_account ?>" id="date_release_check_<?php echo $id_account ?>" />

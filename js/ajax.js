@@ -610,17 +610,19 @@ function addCheck(id_account)
 	$(document).on("click", "#submit_check_" + id_account, function(e){
 		e.preventDefault();
 
-		var checkAmount      = checkFloatVal("amount_" + id_account);
-		var checkIntitule    = checkInput("intitule_" + id_account);
-		var checkDate        = checkInput("date_movement_" + id_account);
+		var checkAmount   = checkFloatVal("amount_" + id_account);
+		var checkNumber   = checkIntVal("number_check_" + id_account);
+		var checkIntitule = checkInput("intitule_" + id_account);
+		var checkDate     = checkInput("date_movement_" + id_account);
 
-		if (checkAmount && checkIntitule && checkDate)
+		if (checkAmount && checkNumber && checkIntitule && checkDate)
 		{
 			$.ajax({
 				type: "POST",
 				url: "ajax/newCheck.php",
 				data: {
 					amount: $("#amount_" + id_account).val(),
+					number: $("#number_check_" + id_account).val(),
 					intitule: $("#intitule_" + id_account).val(),
 					category: $("#select_type_check_" + id_account).val(),
 					date: $("#date_release_check_" + id_account).val(),
@@ -653,7 +655,7 @@ function addCheckMovement(id_account, id_check)
 		data: {
 			id_user: $("#user_" + id_check).data("iduser"),
 			amount: $("#amount_" + id_check).html(),
-			intitule: $("#name_" + id_check).html(),
+			intitule: $("#number_" + id_check).html() + " " + $("#name_" + id_check).html(),
 			category: $("#category_" + id_check).data("idcategory"),
 			id_account: id_account,
 			debit: 0,
@@ -664,7 +666,6 @@ function addCheckMovement(id_account, id_check)
 			nb_month: "",
 		},
 		success: function(msg){
-			console.log(msg);
 			if (msg == 'error_movement')
 			{
 				alert('Une erreur est survenu durant l\'enregistrement');
