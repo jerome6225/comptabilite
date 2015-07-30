@@ -17,4 +17,5 @@
 	include dirname(__FILE__)."/classes/User.php";
 	include dirname(__FILE__)."/classes/Tools.php";
 	include dirname(__FILE__)."/classes/Form.php";
+	include dirname(__FILE__)."/classes/Recaptcha.php"; 
 	include dirname(__FILE__)."/controllers/choiceAccountController.php";
