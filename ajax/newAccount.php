@@ -7,7 +7,7 @@
 
 	for ($i=0;$i<$nbAccount;$i++)
 	{
-		$idAccount = Account::addNewAccount($_SESSION['id_user'], $data['account_name_'.$i], $data['account_type_'.$i], $data['nb_user_'.$i]);
+		$idAccount = Account::addNewAccount($_SESSION['id_user'], htmlentities($data['account_name_'.$i]), $data['account_type_'.$i], $data['nb_user_'.$i]);
 
 		if ($idAccount)
 		{

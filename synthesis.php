@@ -7,7 +7,7 @@
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 <script type="text/javascript" src="js/attc.googleCharts.js" ></script>
 
-<div class="row col-sm-offset-1 col-sm-10">
+<div class="row col-sm-offset-1 col-sm-10 top-sm-xs">
 	<legend>Synth&egrave;se des comptes</legend>
 	<ul class="nav nav-tabs nav-justified">
 		<?php $class = '' ?>
@@ -32,7 +32,7 @@
 							<table class="table table-hover">
 								<tr>
 									<th colspan="2" <?php if (!is_null($b['color'])){echo 'style="color: '.$b['color'].';"';} ?>>
-										<?php if (is_null($b['name_user_account'])){ echo 'tous les utilisateurs';} else {echo 'utilisateur '.$b['name_user_account'];} ?>
+										<?php if (is_null($b['name_user_account'])){ echo 'tous les utilisateurs';} else {echo $b['name_user_account'];} ?>
 									</th>
 								</tr>
 								<tr>

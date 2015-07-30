@@ -2,7 +2,7 @@
 	include dirname(__FILE__)."/../include.php";
 
 	$date = explode('-', $_POST['date']);
-	$emprunt = Emprunt::addEmprunt($_SESSION['id_user'], $_POST['name'], $date[2].'-'.$date[1].'-'.$date[0], $_POST['somme'], $_POST['remboursement'], $_POST['etalonnement'], 0);
+	$emprunt = Emprunt::addEmprunt($_SESSION['id_user'], htmlentities($_POST['name']), $date[2].'-'.$date[1].'-'.$date[0], $_POST['somme'], $_POST['remboursement'], $_POST['etalonnement'], 0);
 
 	if ($emprunt)
 	{

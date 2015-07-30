@@ -507,9 +507,9 @@ function changeUserAccount(idUserAccount)
 	});
 }
 
-function showUserAccountForm(userInput, divUserAccountForm, current)
+function showUserAccountForm(userInput, userSubmit, divUserAccountForm, current)
 {
-	$(document).on("blur", "#" + userInput, function(e){
+	$(document).on("click", "#" + userSubmit, function(e){
 		$.ajax({
 			type: "POST",
 			url: "ajax/userAccountForm.php",

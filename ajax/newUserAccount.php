@@ -5,7 +5,7 @@
 	{
 		for ($i=0;$i<(int)$_POST['nb_user'];$i++)
 		{
-			$newUserAccount = UserAccount::addNewUserAccount($_SESSION['id_user'], $_POST['user_name_'.$i], $_POST['user_color_'.$i]);
+			$newUserAccount = UserAccount::addNewUserAccount($_SESSION['id_user'], htmlentities($_POST['user_name_'.$i]), $_POST['user_color_'.$i]);
 
 			if (!$newUserAccount)
 			{
@@ -19,7 +19,7 @@
 	}
 	else
 	{
-		$newUserAccount = UserAccount::addNewUserAccount($_SESSION['id_user'], $_POST['user_name'], $_POST['user_color']);
+		$newUserAccount = UserAccount::addNewUserAccount($_SESSION['id_user'], htmlentities($_POST['user_name']), $_POST['user_color']);
 
 		if (!$newUserAccount)
 		{

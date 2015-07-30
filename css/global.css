@@ -12,7 +12,7 @@ body {
 	background-color:#ffffff;
 }
 
-.footer ul li a {
+.footer ul li, .footer ul li a {
   color: #9d9d9d;
 }
 
@@ -27,6 +27,30 @@ body {
 
 .info_emprunt {
   margin: 25px 0 110px 0;
+}
+
+.button_margin_bottom {
+  margin-bottom: 10px;
+}
+
+.img_smartphone {
+  height: 430px;
+}
+
+.img_tablet {
+  width: 596px;
+}
+
+.margin_bottom {
+  margin-bottom: 20px !important;
+}
+
+.margin-top {
+  margin-top: 20px !important;
+}
+
+.email-width {
+  width: 55px !important;
 }
 
 @media (min-width: 768px) {
@@ -47,9 +71,17 @@ body {
 }
 
 @media (max-width: 768px) {
+  .top-sm-xs {
+    margin-top: 70px;
+  }
+
   .banniere_size {
 		display: none;
 	}
+
+  .img_tablet {
+    display: none;
+  }
 }
 
 @media (max-width: 991px) {
@@ -61,6 +93,14 @@ body {
   .banniere_size {
 		width: 966px;
 	}
+
+  .img_smartphone {
+    height: 380px;
+  }
+
+  .img_tablet {
+    width: 527px;
+  }
 }
 @media (min-width: 1200px) {
   .banniere_size {

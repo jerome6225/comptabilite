@@ -1,7 +1,7 @@
 <?php
 	include dirname(__FILE__)."/../include.php";
 
-	$update = Movement::updateMovement($_POST['id_movement'], $_POST['user'], $_POST['amount'], $_POST['date_begin'], $_POST['name'], $_POST['category'], $_POST['date_end']);
+	$update = Movement::updateMovement($_POST['id_movement'], $_POST['user'], $_POST['amount'], $_POST['date_begin'], htmlentities($_POST['name']), $_POST['category'], $_POST['date_end']);
 	$result = array();
 
 	if ($update)
@@ -9,7 +9,7 @@
 		if ($_POST['id_movement_assoc'] != 0)
 		{
 			$accountAssoc = Movement::getMovement($_POST['id_movement_assoc']);
-			$updateAssoc  = Movement::updateMovement($_POST['id_movement_assoc'], $_POST['user'], $_POST['amount'], $_POST['date_begin'], $_POST['name'], $accountAssoc->movement_category, $_POST['date_end']);
+			$updateAssoc  = Movement::updateMovement($_POST['id_movement_assoc'], $_POST['user'], $_POST['amount'], $_POST['date_begin'], htmlentities($_POST['name']), $accountAssoc->movement_category, $_POST['date_end']);
 
 			if ($_POST['amount'] != $_POST['oldAmount'])
 			{

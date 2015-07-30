@@ -10,7 +10,7 @@
 			$_POST['intitule'] = 'Mouvement  '.(($_POST['debit'] == 1) ? 'vers ': 'depuis ').$otherAccount->name;
 		}
 	}
-	$addMovement = Movement::addMovement($_SESSION['id_user'], $_POST['id_account'], $_POST['id_user'], $_POST['amount'], $_POST['debit'], $_POST['date'], $_POST['monthly'], $_POST['annual'], $_POST['intitule'], $_POST['category'], $_POST['date_end'], $_POST['nb_month']);
+	$addMovement = Movement::addMovement($_SESSION['id_user'], $_POST['id_account'], $_POST['id_user'], $_POST['amount'], $_POST['debit'], $_POST['date'], $_POST['monthly'], $_POST['annual'], htmlentities($_POST['intitule']), $_POST['category'], $_POST['date_end'], $_POST['nb_month']);
 	
 	if ($addMovement)
 	{
@@ -36,7 +36,7 @@
 
 			$debitOtherAccount = ($_POST['debit'] == "1") ? "0" : "1";
 
-			$addMovementOtherAccount = Movement::addMovement($_SESSION['id_user'], $_POST['account_assoc'], $_POST['id_user'], $_POST['amount'], $debitOtherAccount, $_POST['date'], $_POST['monthly'], $_POST['annual'], $_POST['intitule'], $_POST['category'], $_POST['date_end'], $_POST['nb_month'], $addMovement);
+			$addMovementOtherAccount = Movement::addMovement($_SESSION['id_user'], $_POST['account_assoc'], $_POST['id_user'], $_POST['amount'], $debitOtherAccount, $_POST['date'], $_POST['monthly'], $_POST['annual'], htmlentities($_POST['intitule']), $_POST['category'], $_POST['date_end'], $_POST['nb_month'], $addMovement);
 			$updateMovementAssoc     = Movement::updateMovementAssoc($addMovement, $addMovementOtherAccount);
 
 			$accountBalanceOtherAccount = accountBalance::getAccountBalance($_POST['account_assoc']);

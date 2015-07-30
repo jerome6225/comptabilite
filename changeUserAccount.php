@@ -3,7 +3,7 @@
 <?php include dirname(__FILE__)."/controllers/changeUserAccountController.php" ?>
 <?php include dirname(__FILE__)."/header.php" ?>
 
-<div class="row col-sm-offset-1 col-sm-10">
+<div class="row col-sm-offset-1 col-sm-10 top-sm-xs">
 	<form id="form_account" class="inline-form">
 		<legend>Selectionnez l'utilisateur &agrave; modifier</legend>
 		<div class="form-group has-feedback" id="div_form_select_modif_user_account">

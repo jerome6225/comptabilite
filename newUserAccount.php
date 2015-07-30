@@ -3,7 +3,7 @@
 <?php include dirname(__FILE__)."/controllers/accountController.php" ?>
 <?php include dirname(__FILE__)."/header.php" ?>
 
-<div class="row col-sm-offset-1 col-sm-10">
+<div class="row col-sm-offset-1 col-sm-10 top-sm-xs">
 	<h2 id="success_form_account" class="text-center text-success sr-only">F&eacute;licitation le nouvel utilisateur &agrave; &eacute;t&eacute; cr&eacute;&eacute;</h2>
 	<form id="form_account">
 		<legend>Saisir le nouvel utilisateur</legend>

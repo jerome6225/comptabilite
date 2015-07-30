@@ -4,7 +4,7 @@
 	$idAccount = $_SESSION['id_account_modif'];
 	$data = json_decode((string)$_POST["data"], true);
 
-	$update = Account::updateAccount($idAccount, $data['account_name'], $data['account_type'], $data["nb_user"]);
+	$update = Account::updateAccount($idAccount, htmlentities($data['account_name']), $data['account_type'], $data["nb_user"]);
 
 	if ($update)
 	{

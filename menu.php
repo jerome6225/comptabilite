@@ -35,7 +35,8 @@
 							<li></li><li><a href="accountStatement.php">Relev&eacute; des comptes</a></li>
 							<li class="divider"></li><li><a href="synthesis.php">Synth&egrave;se</a></li>
 							<li class="divider"></li><li><a href="prelevementMensuel.php">D&eacute;pense mensuel</a></li>
-							<li class="divider"></li><li><a href="project.php">Projet</a></li>
+							<!--<li class="divider"></li><li><a href="project.php">Projet</a></li>-->
+							<li class="divider"></li><li><a href="maintenance.php">Projet</a></li>
 							<li class="divider"></li><li><a href="emprunt.php">Emprunt</a></li>
 							<li class="divider"></li><li><a href="check.php">Ch&egrave;que</a></li>
 						</ul>

@@ -3,7 +3,7 @@
 <?php include dirname(__FILE__)."/controllers/checkController.php" ?>
 <?php include dirname(__FILE__)."/header.php" ?>
 
-<div class="row col-sm-offset-1 col-sm-10">
+<div class="row col-sm-offset-1 col-sm-10 top-sm-xs">
 	<legend>Ch&egrave;ques</legend>
 	<legend>S&eacute;lectionnez un mois pour voir les ch&egrave;ques de ce mois <span id="btn_form_synthesis_date" class="glyphicon glyphicon-plus text-primary cursor_pointer"></span></legend>
 	<form class="form-inline sr-only" name="form_synthesis_date" id="form_synthesis_date" method="POST" action="check.php">

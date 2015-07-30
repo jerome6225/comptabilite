@@ -3,7 +3,7 @@
 <?php include dirname(__FILE__)."/controllers/accountStatementController.php" ?>
 <?php include dirname(__FILE__)."/header.php" ?>
 
-<div class="row col-sm-offset-1 col-sm-10">
+<div class="row col-sm-offset-1 col-sm-10 top-sm-xs">
 	<legend>Relev&eacute; des comptes</legend>
 	<legend>S&eacute;lectionnez un mois pour voir relev&eacute; <span id="btn_form_synthesis_date" class="glyphicon glyphicon-plus text-primary cursor_pointer"></span></legend>
 	<form class="form-inline sr-only" name="form_synthesis_date" id="form_synthesis_date" method="POST" action="accountStatement.php">

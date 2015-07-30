@@ -4,7 +4,7 @@
 <?php include dirname(__FILE__)."/controllers/prelevementMensuelController.php" ?>
 <?php include dirname(__FILE__)."/header.php" ?>
 
-<div class="row col-sm-offset-1 col-sm-10">
+<div class="row col-sm-offset-1 col-sm-10 top-sm-xs">
 	<legend>D&eacute;pense mensuel</legend>
 	<legend>Saisissez une somme pour les d&eacute;penses communes <span id="btn_form_prelevement" class="glyphicon glyphicon-plus text-primary cursor_pointer"></span></legend>
 	<form class="sr-only" name="form_prelevement" id="form_prelevement" method="POST" action="prelevementMensuel.php">

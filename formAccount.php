@@ -3,14 +3,14 @@
 <?php include dirname(__FILE__)."/controllers/accountController.php" ?>
 <?php include dirname(__FILE__)."/header.php" ?>
 
-<div class="row col-sm-offset-1 col-sm-10">
+<div class="row col-sm-offset-1 col-sm-10 top-sm-xs">
 	<h2 id="success_form_account" class="text-center text-success sr-only">F&eacute;licitation votre compte est maintenant configur&eacute;</h2>
 	<form id="form_account">
 		<?php for ($i=0;$i<$account;$i++){ ?>
 			<?php $nb = ($i == 0) ? '1er' : ($i +1).'&egrave;me'; ?>
 			<div id="columns" class="row">
 				<legend>Saisissez les informations de votre <?php echo $nb ?> compte</legend>
-				    <section class="col-sm-5">
+				    <section class="col-xs-5">
 				    	<div class="form-group has-feedback" id="div_new_customer_account_name_<?php echo $i ?>">
 					    	<label for="new_customer_account_name_<?php echo $i ?>">Nom du compte : </label>
 							<input type="text" placeholder="Nom" class="form-control" name="new_customer_account_name_<?php echo $i ?>" id="new_customer_account_name_<?php echo $i ?>" />
@@ -22,17 +22,18 @@
 								<?php foreach ($accountType as $type) echo '<option value="'.$type['id_type_account'].'">'.$type['name_type_account'].'</option>' ?>
 							</select>
 						</div>
-						<div class="form-group has-feedback" id="div_new_customer_account_nb_user_<?php echo $i ?>">
+						<div class="form-group has-feedback form-inline" id="div_new_customer_account_nb_user_<?php echo $i ?>">
 					    	<label for="new_customer_account_nb_user_<?php echo $i ?>">Nombre de personnes associ&eacute;es : </label>
 							<input type="text" placeholder="Nombre de personnes" class="form-control" name="new_customer_account_nb_user_<?php echo $i ?>" id="new_customer_account_nb_user_<?php echo $i ?>" />
 							<span class="glyphicon form-control-feedback" aria-hidden="true" id="span_new_customer_account_nb_user_<?php echo $i ?>"></span>
+							<button type="button" class="btn btn-primary" name="submit_new_customer_account_nb_user_<?php echo $i ?>" id="submit_new_customer_account_nb_user_<?php echo $i ?>"><span class="glyphicon glyphicon-plus"></span> Afficher</button>
 						</div>
 						<div id="user_account_<?php echo $i ?>"></div>
 					</section>
 			</div>
 			<script type="text/javascript">
 				$(function(){
-					showUserAccountForm("new_customer_account_nb_user_<?php echo $i ?>", "user_account_<?php echo $i ?>", "<?php echo $i ?>");
+					showUserAccountForm("new_customer_account_nb_user_<?php echo $i ?>", "submit_new_customer_account_nb_user_<?php echo $i ?>", "user_account_<?php echo $i ?>", "<?php echo $i ?>");
 				});
 			</script>
 		<?php } ?>

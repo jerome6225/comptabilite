@@ -3,7 +3,7 @@
 <?php include dirname(__FILE__)."/controllers/empruntController.php" ?>
 <?php include dirname(__FILE__)."/header.php" ?>
 
-<div class="row col-sm-offset-1 col-sm-10">
+<div class="row col-sm-offset-1 col-sm-10 top-sm-xs">
 	<h1>Emprunt</h1>
 	<legend>Ajouter un nouvel emprunt <span id="btn_form_new_emprunt" class="glyphicon glyphicon-plus text-primary cursor_pointer"></span></legend>
 	<form class="sr-only" name="form_new_emprunt" id="form_new_emprunt" method="POST" action="#">

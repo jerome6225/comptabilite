@@ -2,7 +2,7 @@
 <?php include dirname(__FILE__)."/redirectAuth.php" ?>
 <?php include dirname(__FILE__)."/header.php" ?>
 
-<div class="row col-sm-offset-1 col-sm-10">
+<div class="row col-sm-offset-1 col-sm-10 top-sm-xs">
 	<h2 id="success_form_account" class="text-center text-success sr-only">F&eacute;licitation votre mot de passe &agrave; &eacute;t&eacute; modifi&eacute;</h2>
 	<form id="form_account">
 		<legend>Changer de mot de passe</legend>

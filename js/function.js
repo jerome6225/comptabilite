@@ -1,3 +1,5 @@
+var isMailValid = false;
+
 function clear_form_elements(ele) 
 { 
 	$(ele).find(':input').each(function() {
@@ -66,8 +68,8 @@ function checkIsSame(input1, input2)
 {
 	if ($("#" + input1).val() != $("#" + input2).val() || $("#" + input1).val() == '')
 	{
-		isInputNotOk(input1);
-		return isInputNotOk(input2);
+		isInputPasswordNotOk(input1);
+		return isInputPasswordNotOk(input2);
 	}
 	else
 	{
@@ -99,6 +101,14 @@ function isInputNotOk(input)
 	$("#div_" + input).removeClass("has-success").addClass("has-error");
 	$("#span_" + input).removeClass("glyphicon-ok").addClass("glyphicon-remove");
 	setTimeout( function() { $('#' + input).focus() }, 0 );
+
+	return false;
+}
+
+function isInputPasswordNotOk(input)
+{
+	$("#div_" + input).removeClass("has-success").addClass("has-error");
+	$("#span_" + input).removeClass("glyphicon-ok").addClass("glyphicon-remove");
 
 	return false;
 }
@@ -141,4 +151,22 @@ function cancelModifRemboursement(id_remboursement)
 	$(".span_modify_emprunt_" + id_remboursement).removeClass("sr-only");
 	$(".input_hidden_" + id_remboursement).addClass("sr-only");
 	$("#title_remboursement").html("test");
+}
+
+function checkMail(mail) {
+	var regEmail = new RegExp('^[0-9a-z._-]+@{1}[0-9a-z.-]{2,}[.]{1}[a-z]{2,5}$','i');
+
+    if (regEmail.test(mail))
+    {
+    	$("#div_email").removeClass("has-error").addClass("has-success");
+		$("#span_email").removeClass("glyphicon-remove").addClass("glyphicon-ok");
+		isMailValid = true;
+    }
+    else
+    {
+    	isMailValid = false;
+    	$("#div_email").removeClass("has-success").addClass("has-error");
+		$("#span_email").removeClass("glyphicon-ok").addClass("glyphicon-remove");
+		setTimeout( function() { $('#email').focus() }, 0 );
+    }
 }

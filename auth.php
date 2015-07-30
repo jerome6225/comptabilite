@@ -1,7 +1,7 @@
 <?php include dirname(__FILE__)."/include.php" ?>
 <?php include dirname(__FILE__)."/header.php" ?>
 
-<div class="row col-sm-offset-1 col-sm-10">
+<div class="row col-sm-offset-1 col-sm-10 top-sm-xs">
 	<form>
 		<div id="columns" class="row">
 			<legend>Cr&eacute;ez votre compte</legend>

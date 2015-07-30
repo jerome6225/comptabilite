@@ -3,7 +3,7 @@
 <?php include dirname(__FILE__)."/controllers/createUserController.php" ?>
 <?php include dirname(__FILE__)."/header.php" ?>
 
-<div class="row col-sm-offset-1 col-sm-10">
+<div class="row col-sm-offset-1 col-sm-10 top-sm-xs">
 	<form>
 		<?php for ($i=0;$i<$nb_user;$i++){ ?>
 			<?php $currentUser = ($i == 0) ? '1er' : ($i +1).'&egrave;me'; ?>
