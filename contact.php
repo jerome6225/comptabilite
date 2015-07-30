@@ -26,7 +26,7 @@
 				</div>
 			</section>
 			<section class="col-sm-7 margin_bottom">
-				<?php if (!$checkCaptcha){ ?>
+				<?php if ($mailPost && !$checkCaptcha){ ?>
 					<legend class="text-danger">D&eacute;sol&eacute; erreur de captcha</legend>
 				<?php } ?>
 				<div class="g-recaptcha col-sm-8" data-sitekey="6Le0igoTAAAAAAeuGa9K_C_jUsw_20u_GPw5BSLu"></div>

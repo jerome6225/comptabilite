@@ -10,7 +10,7 @@ if (!empty($_POST))
 
 	$captcha = new Recaptcha();
 
-	if ($captcha->getCode($_POST['g-recaptcha-response'] == false)
+	if ($captcha->getCode($_POST['g-recaptcha-response']) == false)
 		$result = false;
 	else
 	{
