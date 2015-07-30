@@ -1,5 +1,4 @@
 <?php include dirname(__FILE__)."/include.php" ?>
-<?php include dirname(__FILE__)."/redirectAuth.php" ?>
 <?php include dirname(__FILE__)."/controllers/contactController.php" ?>
 <?php include dirname(__FILE__)."/header.php" ?>
 
