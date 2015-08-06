@@ -1,4 +1,17 @@
-var isMailValid = false;
+var isMailValid      = false;
+var ajax_in_progress = false;
+
+function ajaxInProgress()
+{
+	ajax_in_progress = true;
+	$("#img_loader").fadeIn(500);
+}
+
+function ajaxNotInProgress()
+{
+	ajax_in_progress = false;
+	$("#img_loader").fadeOut(500);
+}
 
 function clear_form_elements(ele) 
 { 

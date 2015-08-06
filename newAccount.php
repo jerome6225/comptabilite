@@ -11,7 +11,7 @@
 		    <section class="col-sm-5">
 		    	<div class="form-group has-feedback" id="div_new_customer_account_name">
 			    	<label for="new_customer_account_name">Nom : </label>
-					<input type="text" placeholder="Nom" class="form-control" name="new_customer_account_name" id="new_customer_account_name" />
+					<input type="text" tabIndex="1" placeholder="Nom" class="form-control" name="new_customer_account_name" id="new_customer_account_name" />
 					<span class="glyphicon form-control-feedback" aria-hidden="true" id="span_new_customer_account_name"></span>
 				</div>
 				<div class="form-group has-feedback" id="div_new_customer_account_type">
@@ -20,22 +20,23 @@
 						<?php foreach ($accountType as $type) echo '<option value="'.$type['id_type_account'].'">'.$type['name_type_account'].'</option>' ?>
 					</select>
 				</div>
-				<div class="form-group has-feedback" id="div_new_customer_account_nb_user">
+				<div class="form-group has-feedback form-inline" id="div_new_customer_account_nb_user">
 			    	<label for="new_customer_account_nb_user">Nombre de personnes associ&eacute;es : </label>
 					<input type="text" placeholder="Nombre de personnes" class="form-control" name="new_customer_account_nb_user" id="new_customer_account_nb_user" />
 					<span class="glyphicon form-control-feedback" aria-hidden="true" id="span_new_customer_account_nb_user"></span>
+					<button type="button" class="btn btn-primary" name="submit_new_customer_account_nb_user" id="submit_new_customer_account_nb_user"><span class="glyphicon glyphicon-plus"></span> Afficher</button>
 				</div>
 				<div id="user_account"></div>
 			</section>
 		</div>
 		<div class="row">
-			<button type="button" class="btn btn-primary btn-sm" name="submit_new_customer_account" id="submit_new_customer_account"><span class="glyphicon glyphicon-plus"></span> Cr&eacute;er</button>
+			<button type="button" class="btn btn-primary btn-sm sr-only" name="submit_new_customer_account" id="submit_new_customer_account"><span class="glyphicon glyphicon-plus"></span> Cr&eacute;er</button>
 		</div>
 	</form>
 </div>
 <script type="text/javascript">
 	$(function(){
-		showUserAccountForm("new_customer_account_nb_user", "user_account", "0");
+		showUserAccountForm("new_customer_account_nb_user", "submit_new_customer_account_nb_user", "user_account", "0");
 
 		$(document).on("click", "#submit_new_customer_account", function(e){
 			var checkName      = checkInput("new_customer_account_name");

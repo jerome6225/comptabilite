@@ -70,7 +70,7 @@
 								<td>-</td>
 								<td>-</td>
 								<td>-</td>
-								<td><?php echo $c[1]['total_category_movement']['amount'] ?> &euro;</td>
+								<td class="<?php if($c[0]['total_category_movement']['amount'] > $c[1]['total_category_movement']['amount']){ ?>text-success<?php }else{ ?>text-danger<?php } ?>"><?php echo $c[1]['total_category_movement']['amount'] ?> &euro;</td>
 								<td><?php echo (isset($c[0]['total_category_movement']['totalCommun'])) ? $c[0]['total_category_movement']['totalCommun'].' &euro;' : '-'; ?></td>
 							</tr>
 						<?php } ?>
