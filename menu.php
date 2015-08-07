@@ -48,6 +48,7 @@
 							<li class="divider"></li><li><a href="deleteUserAccount.php">Supprimer utilisateur</a></li>
 							<li class="divider"></li><li><a href="newAccount.php">Ajouter un compte</a></li>
 							<li class="divider"></li><li><a href="changeAccount.php">Modifier un compte</a></li>
+							<li class="divider"></li><li><a href="deleteAccount.php">Supprimer un compte</a></li>
 						</ul>
 	          		</li>
 	          		<li><a href="#" id="account_name_menu"><?php if (isset($_SESSION['id_account'])) { echo $_SESSION['account_name']; } ?></a></li>

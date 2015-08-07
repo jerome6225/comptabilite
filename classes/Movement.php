@@ -169,6 +169,15 @@
 			return Db::delete('movement', $where);
 		}
 
+		public static function deleteAccountMovement($idAccount)
+		{
+			$where = array(
+				'id_account' => array(PDO::PARAM_INT => $idAccount),
+			);
+
+			return Db::delete('movement', $where);
+		}
+
 		public static function deleteUserAccountMovement($idUserAccount)
 		{
 			$where = array(

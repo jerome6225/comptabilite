@@ -467,35 +467,35 @@ function validModify(id_movement, monthly){
 
 function changeAccount(){
 	$(document).on("click", "#submit_select_account", function(e){
-			e.preventDefault();
-			$("#success_form_account").addClass("sr-only");
-			$("#modif_account_subtitle").hide();
+		e.preventDefault();
+		$("#success_form_account").addClass("sr-only");
+		$("#modif_account_subtitle").hide();
 
-			if (!ajax_in_progress)
-			{
-				ajaxInProgress();
+		if (!ajax_in_progress)
+		{
+			ajaxInProgress();
 
-				$.ajax({
-					type: "POST",
-					url: "ajax/changeAccount.php",
-					data: {
-						account: $("#select_account").val(),
-					},
-					success: function(msg){
-						if (msg == 'error')
-						{
-							alert('Erreur lors de la selection du compte');
-						}
-						else
-						{
-							$('#div_modif_account').html(msg);
-						}
-
-						ajaxNotInProgress();
+			$.ajax({
+				type: "POST",
+				url: "ajax/changeAccount.php",
+				data: {
+					account: $("#select_account").val(),
+				},
+				success: function(msg){
+					if (msg == 'error')
+					{
+						alert('Erreur lors de la selection du compte');
 					}
-				});
-			}
-		});
+					else
+					{
+						$('#div_modif_account').html(msg);
+					}
+
+					ajaxNotInProgress();
+				}
+			});
+		}
+	});
 }
 
 function selectChangeUserAccount(){
@@ -520,39 +520,6 @@ function selectChangeUserAccount(){
 					else
 					{
 						$('#div_modif_user_account').html(msg);
-					}
-
-					ajaxNotInProgress();
-
-					return false;
-				}
-			});
-		}
-	});
-}
-
-function selectDeleteUserAccount(){
-	$(document).on("click", "#submit_form_select_delete_user_account", function(e){
-		$("#success_form_account").addClass("sr-only");
-
-		if (!ajax_in_progress)
-		{
-			ajaxInProgress();
-
-			$.ajax({
-				type: "POST",
-				url: "ajax/deleteUserAccount.php",
-				data: {
-					id_user_account:$("#select_delete_user_account").val(),
-				},
-				success: function(msg){
-					if (msg == "error")
-					{
-						alert("erreur pendant la suppression");
-					}
-					else
-					{
-						$("#success_form_account").removeClass("sr-only");
 					}
 
 					ajaxNotInProgress();
@@ -617,6 +584,71 @@ function changeUserAccount(idUserAccount)
 					}
 				});
 			}
+		}
+	});
+}
+
+function deleteUserAccount(){
+	$(document).on("click", "#submit_form_select_delete_user_account", function(e){
+		$("#success_form_account").addClass("sr-only");
+
+		if (!ajax_in_progress)
+		{
+			ajaxInProgress();
+
+			$.ajax({
+				type: "POST",
+				url: "ajax/deleteUserAccount.php",
+				data: {
+					id_user_account:$("#select_delete_user_account").val(),
+				},
+				success: function(msg){
+					if (msg == "error")
+					{
+						alert("erreur pendant la suppression");
+					}
+					else
+					{
+						$("#success_form_account").removeClass("sr-only");
+					}
+
+					ajaxNotInProgress();
+
+					return false;
+				}
+			});
+		}
+	});
+}
+
+function deleteAccount(){
+	$(document).on("click", "#submit_delete_account", function(e){
+		e.preventDefault();
+		$("#success_form_account").addClass("sr-only");
+
+		if (!ajax_in_progress)
+		{
+			ajaxInProgress();
+
+			$.ajax({
+				type: "POST",
+				url: "ajax/deleteAccount.php",
+				data: {
+					account: $("#delete_account").val(),
+				},
+				success: function(msg){
+					if (msg == 'error')
+					{
+						alert('Erreur lors de la suppression du compte');
+					}
+					else
+					{
+						$("#success_form_account").removeClass("sr-only");
+					}
+
+					ajaxNotInProgress();
+				}
+			});
 		}
 	});
 }

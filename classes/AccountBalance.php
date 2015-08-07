@@ -51,4 +51,13 @@
 
 			$accountBalance = Db::update('account_balance', $fields, $where);
 		}
+
+		public static function deleteAccountBalance($idAccount)
+		{
+			$where = array(
+				'id_account' => array(PDO::PARAM_INT => $idAccount),
+			);
+
+			return Db::delete('account_balance', $where);
+		}
 	}

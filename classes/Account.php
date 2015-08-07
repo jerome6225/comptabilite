@@ -54,4 +54,13 @@
 
 			return Db::update('account', $fields, $where);
 		}
+
+		public static function deleteAccount($idAccount)
+		{
+			$where = array(
+				'id_account' => array(PDO::PARAM_INT => $idAccount),
+			);
+
+			return Db::delete('account', $where);
+		}
 	}

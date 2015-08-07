@@ -19,6 +19,7 @@ ligne de commande:
 Debug:
 	- dans Releve de compte:
 		Lors de la modification d'une somme ou de la suppression mettre à jour le total
+		assigner à affiche les utilisateurs du compte 1
     - dans Bilan:
     	Warning dans
     		"Undefined index: courant*35 in /var/www/comptabiliteClass/accountStatement .php on line 52, referer: http://jerome.ratel.stomp9.fr/comptabiliteClass/synthesis.php" et 
