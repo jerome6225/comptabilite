@@ -53,6 +53,17 @@ body {
   width: 55px !important;
 }
 
+#img_loader {
+  position : fixed;
+  z-index: 9999;
+  background : url("../img/loader.gif") no-repeat scroll 50% 50% rgba(128, 128, 128, 0.4);
+  top : 0px;
+  left : 0px;
+  height : 100%;
+  width : 100%;
+  cursor : wait;
+}
+
 @media (min-width: 768px) {
 	.dropdown:hover .dropdown-menu {
 		display: block;

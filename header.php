@@ -3,7 +3,8 @@
 <head>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	
 	<!-- favicon -->
 	<link rel="shortcut icon" href="img/favicons/favicon.ico" type="image/x-icon">
 	<link rel="icon" href="img/favicons/favicon.png" type="image/png">
@@ -41,6 +42,9 @@
 			fjs.parentNode.insertBefore(js, fjs);
 		}(document, 'script', 'facebook-jssdk'));
 	</script>
+
+	<div id="img_loader" style="display: none;"></div>
+
 	<div class="container">
-		<img src="img/banniere.png" class="banniere_size" />
+		<img src="img/banniere.png" class="banniere_size" alt="banniere ma compta" />
 		<?php include "menu.php" ?>

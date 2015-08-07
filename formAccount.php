@@ -38,7 +38,7 @@
 			</script>
 		<?php } ?>
 		<div class="row">
-			<button type="button" class="btn btn-primary btn-sm" name="submit_new_customer_account" id="submit_new_customer_account"><span class="glyphicon glyphicon-plus glyphicon-user"></span> Cr&eacute;er</button>
+			<button type="button" class="btn btn-primary btn-sm sr-only" name="submit_new_customer_account" id="submit_new_customer_account"><span class="glyphicon glyphicon-plus glyphicon-user"></span> Cr&eacute;er</button>
 		</div>
 	</form>
 	<script type="text/javascript">

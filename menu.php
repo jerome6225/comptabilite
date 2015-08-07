@@ -1,4 +1,4 @@
-<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" id="navbar-defile">
+<nav class="navbar navbar-inverse navbar-fixed-top" id="navbar-defile">
 	<div class="container-fluid">
 		<div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menu-navigation"> 
