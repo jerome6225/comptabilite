@@ -106,4 +106,13 @@
 
 			return Db::update('remboursement', $fields, $where);
 		}
+
+		public static function deleteRemboursement($idEmprunt)
+		{
+			$where = array(
+				'id_emprunt' => array(PDO::PARAM_INT => $idEmprunt),
+			);
+
+			return Db::delete('remboursement', $where);
+		}
 	}

@@ -103,6 +103,15 @@
 				'id_emprunt' => array(PDO::PARAM_INT => $idEmprunt),
 			);
 
-			return Db::update('user', $fields, $where);
+			return Db::update('emprunt', $fields, $where);
+		}
+
+		public static function deleteEmprunts($idUser)
+		{
+			$where = array(
+				'id_user' => array(PDO::PARAM_INT => $idUser),
+			);
+
+			return Db::delete('emprunt', $where);
 		}
 	}

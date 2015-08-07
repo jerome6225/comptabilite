@@ -63,4 +63,13 @@
 
 			return Db::delete('account', $where);
 		}
+
+		public static function deleteAccounts($idUser)
+		{
+			$where = array(
+				'id_user' => array(PDO::PARAM_INT => $idUser),
+			);
+
+			return Db::delete('account', $where);
+		}
 	}

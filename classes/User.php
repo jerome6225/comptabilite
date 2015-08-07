@@ -133,4 +133,13 @@
 
 			return Db::update('user', $fields, $where);
 		}
+
+		public static function deleteUser($idUser)
+		{
+			$where = array(
+				'id_user' => array(PDO::PARAM_INT => $idUser),
+			);
+
+			return Db::delete('user', $where);
+		}
 	}

@@ -64,6 +64,9 @@ body {
   cursor : wait;
 }
 
+.text-danger {
+  color: #a94442 !important;
+}
 @media (min-width: 768px) {
 	.dropdown:hover .dropdown-menu {
 		display: block;

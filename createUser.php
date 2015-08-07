@@ -24,7 +24,7 @@
 			</div>
 		<?php } ?>
 		<div class="row">
-			<button type="button" class="btn btn-primary btn-sm" name="submit_new_customer_user_account" id="submit_new_customer_user_account"><span class="glyphicon glyphicon-plus glyphicon-user"></span> Cr&eacute;er</button>
+			<button type="button" class="btn btn-primary btn-sm" name="submit_new_customer_user_account" id="submit_new_customer_user_account"><span class="glyphicon glyphicon-floppy-saved"></span> Cr&eacute;er</button>
 		</div>
 	</form>
 </div>

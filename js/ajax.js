@@ -653,6 +653,36 @@ function deleteAccount(){
 	});
 }
 
+function deleteUser(){
+	$(document).on("click", "#submit_delete_user", function(e){
+		e.preventDefault();
+		$("#success_form_account").addClass("sr-only");
+
+		if (!ajax_in_progress)
+		{
+			ajaxInProgress();
+
+			$.ajax({
+				type: "POST",
+				url: "ajax/deleteUser.php",
+				success: function(msg){
+					if (msg == 'error')
+					{
+						alert('Erreur lors de la suppression de votre compte');
+					}
+					else
+					{
+						alert('Votre compte a été supprimé');
+					}
+
+					ajaxNotInProgress();
+
+					document.location.href="index.php";
+				}
+			});
+		}
+	});
+}
 function showUserAccountForm(userInput, userSubmit, divUserAccountForm, current)
 {
 	$(document).on("click", "#" + userSubmit, function(e){

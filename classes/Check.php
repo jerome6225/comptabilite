@@ -110,4 +110,13 @@
 
 			return $years;
 		}
+
+		public static function deleteChecks($idUser)
+		{
+			$where = array(
+				'id_user' => array(PDO::PARAM_INT => $idUser),
+			);
+
+			return Db::delete('check', $where);
+		}
 	}

@@ -6,11 +6,11 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	
 	<!-- favicon -->
-	<link rel="shortcut icon" href="img/favicons/favicon.ico" type="image/x-icon">
-	<link rel="icon" href="img/favicons/favicon.png" type="image/png">
-	<link rel="icon" sizes="32x32" href="img/favicons/favicon-32.png" type="image/png">
-	<link rel="icon" sizes="64x64" href="img/favicons/favicon-64.png" type="image/png">
-	<link rel="icon" sizes="96x96" href="img/favicons/favicon-96.png" type="image/png">
+	<link rel="shortcut icon" href="img/favicon/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="img/favicon/favicon.png" type="image/png">
+	<link rel="icon" sizes="32x32" href="img/favicon/favicon-32.png" type="image/png">
+	<link rel="icon" sizes="64x64" href="img/favicon/favicon-64.png" type="image/png">
+	<link rel="icon" sizes="96x96" href="img/favicon/favicon-96.png" type="image/png">
 	<!-- /favicon -->
 
 	<script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
