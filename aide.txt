@@ -35,11 +35,29 @@ Reste à faire:
 
 boite à idées:
 	interface utilisateur:
-		//modifier relevé de compte pour affichage au mois:
-		//	- mettre un select pour le mois et un pour l'année
+		relevé de compte:
+			- ajouter paiement tout les X mois
 
-		//modifier relevé de comptes pour saisir directement une nouvelle entrée dans cette page:
-		//	- prévoir une ligne en plus dans le tableau pour insertion en base
+		gestion multi compte:
+			- si un compte commun et plusieurs compte perso.
+		//		- modification de la table user: 
+		//			- ajouter un champ multi_account type boolean 
+		//				- 0 si utilisation normale
+		//				- 1 si utilisation multi compte
+		//		- modification de la table account:
+		//			- ajouter un champ master type int
+		//				- 0 si master
+		//				- id_account si slave
+
+			- menu
+				- relevé de comptes reste identique
+				- synthèse reste identique
+				- dépense mensuel à adapter car pas cohérent avec plusieurs comptes
+				on ajoute un onglet au menu
+
+		importer et exporter des csv
+
+		page suppression de compte
 
 		faire une page projet pour calculer le montant d'un projet et le temps pour le réaliser:
 			- faire un sous menu en ajax suivant la selection (voir les modules mdweb partie admin):
@@ -51,6 +69,12 @@ boite à idées:
 			- recuperer les utilisateurs du compte pour les afficher avec des checkbox
 			- calculer la part de chacun en fonction de ses revenus.
 
+		//modifier relevé de compte pour affichage au mois:
+		//	- mettre un select pour le mois et un pour l'année
+
+		//modifier relevé de comptes pour saisir directement une nouvelle entrée dans cette page:
+		//	- prévoir une ligne en plus dans le tableau pour insertion en base
+
 		//faire une page remboursement si jamais on emprunte de l'argent à quelqu'un avec un suivie des remboursements.
 		//	- creer une table emprunt (id_emprunt, name_emprunt, amount_emprunt, date_emprunt)
 		//	- creer une table remboursement (id_remboursement, id_emprunt, date_remboursement)
@@ -60,12 +84,8 @@ boite à idées:
 
 		//Voir pour faire des virements en interne entre compte.
 
-		importer et exporter des csv
-
-		page suppression de compte
-
-		page chèque:
-			ajouté un champs id du cheque plus facile pour retracer
+		//page chèque:
+		//	ajouté un champs id du cheque plus facile pour retracer
 		// chèque avec date:
 		// 	à la date indiqué le chèque est débité
 		// chèque sans date:
