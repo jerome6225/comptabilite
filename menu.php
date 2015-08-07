@@ -31,7 +31,6 @@
 	          <?php }else{ ?>
 	          		<li class="dropdown"><a data-toggle="dropdown" class="dropdown-toggle" href="#">Gestion des comptes <b class="caret"></b></a>
 						<ul class="dropdown-menu">
-							<!--<li><a href="movement.php">Nouvelle entr&eacute;e</a></li>-->
 							<li></li><li><a href="accountStatement.php">Relev&eacute; des comptes</a></li>
 							<li class="divider"></li><li><a href="synthesis.php">Synth&egrave;se</a></li>
 							<li class="divider"></li><li><a href="prelevementMensuel.php">D&eacute;pense mensuel</a></li>
@@ -46,6 +45,7 @@
 							<li><a href="passwordChange.php">Changer mot de passe</a></li>
 							<li class="divider"></li><li><a href="newUserAccount.php">Nouvel utilisateur</a></li>
 							<li class="divider"></li><li><a href="changeUserAccount.php">Modifier utilisateur</a></li>
+							<li class="divider"></li><li><a href="deleteUserAccount.php">Supprimer utilisateur</a></li>
 							<li class="divider"></li><li><a href="newAccount.php">Ajouter un compte</a></li>
 							<li class="divider"></li><li><a href="changeAccount.php">Modifier un compte</a></li>
 						</ul>

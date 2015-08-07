@@ -531,6 +531,39 @@ function selectChangeUserAccount(){
 	});
 }
 
+function selectDeleteUserAccount(){
+	$(document).on("click", "#submit_form_select_delete_user_account", function(e){
+		$("#success_form_account").addClass("sr-only");
+
+		if (!ajax_in_progress)
+		{
+			ajaxInProgress();
+
+			$.ajax({
+				type: "POST",
+				url: "ajax/deleteUserAccount.php",
+				data: {
+					id_user_account:$("#select_delete_user_account").val(),
+				},
+				success: function(msg){
+					if (msg == "error")
+					{
+						alert("erreur pendant la suppression");
+					}
+					else
+					{
+						$("#success_form_account").removeClass("sr-only");
+					}
+
+					ajaxNotInProgress();
+
+					return false;
+				}
+			});
+		}
+	});
+}
+
 function changeUserAccount(idUserAccount)
 {
 	$(document).on("click", "#submit_form_modif_user_account", function(e){

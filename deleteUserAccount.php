@@ -14,8 +14,7 @@
 			<button type="button" class="btn btn-primary btn-sm" name="submit_form_select_delete_user_account" id="submit_form_select_delete_user_account"><span class="glyphicon glyphicon-thumbs-up"></span> Valider</button>
 		</div>
 	</form>
-	<h2 id="success_form_account" class="text-center text-success sr-only">F&eacute;licitation l'utilisateur &agrave; &eacute;t&eacute; modifi&eacute;</h2>
-	<div id="div_modif_user_account"></div>
+	<h2 id="success_form_account" class="text-center text-success sr-only">F&eacute;licitation l'utilisateur &agrave; &eacute;t&eacute; supprim&eacute;</h2>
 </div>
 <script type="text/javascript">
 	$(function(){
