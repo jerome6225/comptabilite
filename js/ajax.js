@@ -727,9 +727,22 @@ function movement(id_account)
 
 	$(document).on('click', '#select_monthly_' + id_account, function(e){
 		if ($("#select_monthly_" + id_account).val() == '1')
+		{
 			$("#div_monthly_" + id_account).show();
-		else
+			$("#div_x_month_" + id_account).hide();
+		}
+		else if ($("#select_monthly_" + id_account).val() == '2')
+		{
+			$("#div_x_month_" + id_account).show();
 			$("#div_monthly_" + id_account).hide();
+			$("#div_annual_" + id_account).hide();
+		}
+		else
+		{
+			$("#div_x_month_" + id_account).hide();
+			$("#div_monthly_" + id_account).hide();
+			$("#div_annual_" + id_account).hide();
+		}
 	});
 
 	$(document).on('click', '#select_annual_' + id_account, function(e){
@@ -770,6 +783,7 @@ function movement(id_account)
 						debit: $("#select_debit_" + id_account).val(),
 						date: $("#date_movement_" + id_account).val(),
 						monthly: $("#select_monthly_" + id_account).val(),
+						x_month: $("#x_month_" + id_account).val(),
 						annual: $("#select_annual_" + id_account).val(),
 						date_end: $("#date_end_movement_" + id_account).val(),
 						nb_month: $("#input_annual_" + id_account).val(),

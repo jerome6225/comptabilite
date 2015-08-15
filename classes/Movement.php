@@ -72,7 +72,10 @@
 			AND ((m.date_movement BETWEEN '".$dateBegin."' AND '".$dateEnd."')
 				OR (m.monthly = 1 
 					AND ((m.date_movement < '".$dateEnd."' AND (m.date_end > '".$dateEnd."' OR m.date_end = '0000-00-00'))
-					OR (m.annual = 1 OR nb_month >= '".$month."'))))
+					OR (m.annual = 1 OR nb_month >= '".$month."')))
+				OR (m.monthly = 2
+					AND ((m.date_movement < '".$dateEnd."' AND ('".$month."' % x_month = 1)))
+					))
 			ORDER BY m.date_movement ASC");
 
 			$sql->setFetchMode(PDO::FETCH_ASSOC);
@@ -227,7 +230,7 @@
 			return Db::update('movement', $fields, $where);
 		}
 
-		public static function addMovement($idUser, $idAccount, $idUserAccount, $amount, $debit, $dateMovement, $monthly, $annual, $nameAccount, $movementCategory, $dateEnd, $nbMonth, $idMovementAssoc=0)
+		public static function addMovement($idUser, $idAccount, $idUserAccount, $amount, $debit, $dateMovement, $monthly, $xMonth, $annual, $nameAccount, $movementCategory, $dateEnd, $nbMonth, $idMovementAssoc=0)
 		{
 
 			$fields = array(
@@ -238,6 +241,7 @@
 				'debit'             => array(PDO::PARAM_STR => $debit),
 				'date_movement'     => array(PDO::PARAM_STR => $dateMovement),
 				'monthly'           => array(PDO::PARAM_STR => $monthly),
+				'x_month'           => array(PDO::PARAM_STR => $xMonth),
 				'annual'            => array(PDO::PARAM_STR => $annual),
 				'name_movement'     => array(PDO::PARAM_STR => $nameAccount),
 				'movement_category' => array(PDO::PARAM_STR => $movementCategory),

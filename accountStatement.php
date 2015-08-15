@@ -173,7 +173,13 @@
 									<select class="form-control" id="select_monthly_<?php echo $id_account ?>" name="select_monthly_<?php echo $id_account ?>">
 										<option value="0">Une seule fois</option>
 										<option value="1">Tous les mois</option>
+										<option value="2">Tous X mois</option>
 									</select>
+								</div>
+								<div class="form-group has-feedback" id="div_x_month_<?php echo $id_account ?>" style="display: none;">
+									<label for="x_month_<?php echo $id_account ?>">Tous les combiens de mois : </label>
+									<input type="text" placeholder="Tous les combiens de mois" class="form-control" name="x_month_<?php echo $id_account ?>" id="x_month_<?php echo $id_account ?>" />
+									<span class="glyphicon form-control-feedback" aria-hidden="true" id="span_x_month_<?php echo $id_account ?>"></span>
 								</div>
 								<div id="div_monthly_<?php echo $id_account ?>" style="display: none;">
 									<div class="form-group has-feedback" id="div_date_end_movement_<?php echo $id_account ?>">
