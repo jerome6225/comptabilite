@@ -40,7 +40,7 @@ Reste à faire:
 boite à idées:
 	interface utilisateur:
 		relevé de compte:
-			- ajouter paiement tout les X mois
+		//	- ajouter paiement tout les X mois
 
 		gestion multi compte:
 			- si un compte commun et plusieurs compte perso.
@@ -52,6 +52,13 @@ boite à idées:
 		//			- ajouter un champ master type int
 		//				- 0 si master
 		//				- id_account si slave
+				- compte master:
+					- il permet de gerer la création des comptes slaves et de gerer le compte master.
+					- il ne permet pas de voir le détail des comptes slaves.
+					- il permet le virement vers les comptes slaves.
+				- le compte slave:
+					- il permet de voir le detail du compte master sans pouvoir le modifier.
+					- il permet de gerer ce compte et permet les virements vers le compte master mais pas l'inverse.
 
 			- menu
 				- relevé de comptes reste identique

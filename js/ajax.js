@@ -879,11 +879,13 @@ function addCheckMovement(id_account, id_check)
 				annual: 0,
 				date_end: "",
 				nb_month: "",
+				x_month: ""
 			},
+
 			success: function(msg){
 				if (msg == 'error_movement')
 				{
-					alert('Une erreur est survenu durant l\'enregistrement');
+					alert('Une erreur est survenu durant l\'enregistrement sur le compte');
 				}
 				else
 				{
@@ -898,7 +900,7 @@ function addCheckMovement(id_account, id_check)
 						success: function(m){
 							if (m == 'error_add_check')
 							{
-								alert('Une erreur est survenu durant l\'enregistrement');
+								alert('Une erreur est survenu durant l\'enregistrement du debit du cheque');
 							}
 							else
 							{
