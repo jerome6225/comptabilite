@@ -32,8 +32,8 @@ Debug:
     		"Undefined offset: 1 in /var/www/comptabiliteClass/prelevementMensuel.php on line 33, referer: http://jerome.ratel.stomp9.fr/comptabiliteClass/accountStatement%20.php"
 
 retour:
-	prelevement mensuel mettre en couleur le total des depenses (en vert si > total des revenu en rouge sinon)
-	releve de compte ajouter possibilite de paiement tous les x mois
+	//prelevement mensuel mettre en couleur le total des depenses (en vert si > total des revenu en rouge sinon)
+	//releve de compte ajouter possibilite de paiement tous les x mois
 Reste à faire:
   Revoir le calcul Total des mouvements dans synthesis.php
 

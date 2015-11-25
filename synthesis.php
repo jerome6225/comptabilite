@@ -32,7 +32,7 @@
 							<table class="table table-hover">
 								<tr>
 									<th colspan="2" <?php if (!is_null($b['color'])){echo 'style="color: '.$b['color'].';"';} ?>>
-										<?php if (is_null($b['name_user_account'])){ echo 'tous les utilisateurs';} else {echo $b['name_user_account'];} ?>
+										<?php if (is_null($b['name_user_account'])){ echo 'Global';} else {echo $b['name_user_account'];} ?>
 									</th>
 								</tr>
 								<tr>
