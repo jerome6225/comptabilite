@@ -72,9 +72,9 @@
 			AND ((m.date_movement BETWEEN '".$dateBegin."' AND '".$dateEnd."')
 				OR (m.monthly = 1 
 					AND ((m.date_movement < '".$dateEnd."' AND (m.date_end > '".$dateEnd."' OR m.date_end = '0000-00-00'))
-					OR (m.annual = 1 OR nb_month >= '".$month."')))
+					OR ((m.annual = 1 AND m.date_end > '".$dateEnd."') OR (nb_month >= '".$month."' AND m.date_end > '".$dateEnd."'))))
 				OR (m.monthly = 2
-					AND ((m.date_movement < '".$dateEnd."' AND ('".$month."' % x_month = 1)))
+					AND ((m.date_movement < '".$dateEnd."'  AND m.date_end > '".$dateEnd."' AND ('".$month."' % x_month = 1)))
 					))
 			ORDER BY m.date_movement ASC");
 

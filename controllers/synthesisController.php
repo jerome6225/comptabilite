@@ -47,8 +47,8 @@
 					$bilans[$key.'*'.$m['id_account']][$user['id_user_account']][] = $bilan;
 				}
 			}
-			//if(is_null($m['id_user_account']))
-			//{
+			if(is_null($m['id_user_account']))
+			{
 				$bilan['amount']            = $m['calc_amount'];
 				$bilan['debit']             = $m['debit'];
 				$bilan['color']             = $m['color'];
@@ -71,14 +71,14 @@
 				}
 
 				$bilans[$key.'*'.$m['id_account']][0][] = $bilan;
-			//}
+			}
 		}
 
 		$usersBilan = $bilans;
 	}
 
-	foreach ($usersBilan as &$us)
-		ksort($us);
+	/*foreach ($usersBilan as &$us)
+		ksort($us);*/
 
 	$bilanUsers = array();
 
